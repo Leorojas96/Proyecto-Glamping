@@ -1,0 +1,144 @@
+#crearHabitacion_fotos {
+    width: 100%;
+    display: flex;
+    padding: 15px;
+    gap: 10px;
+}
+
+
+/* BOTONES GUARDAR Y CANCELAR */
+#div_btn {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* FORMULARIO */
+.container {
+    min-width: 50% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.textarea-selecciones {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+@media screen and (max-width:1230px) {
+    .textarea-selecciones {
+        display: flex;
+        min-width: 80%;
+    }
+
+    .nav1,
+    .nav2 {
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width:1112px) {
+    #crearHabitacion_fotos {
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+    }
+
+    .container{
+        width: 90% !important;
+    }
+
+    #registrarHabitacion{
+        order: 0;
+    }
+
+    .container{
+        order: 1;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .textarea-selecciones {
+        width: 140% ;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+    }
+
+    .textarea{
+        height: 230px;
+    }
+}
+
+/*  SELECCIONES DE HABITACION*/
+#selecciones {
+    min-width: 80%;
+    background: #f0e6D6 !important;
+    border-radius: 40px;
+    padding: 15px;
+    border: 5px solid rgb(255, 255, 255);
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputT,
+label {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.nav_nav {
+    display: flex;
+}
+
+/* TEXTAREA */
+.textarea {
+    min-width: 50%;
+    font-size: 14px;
+    float: right;
+}
+
+/* CARRUSEL CREAR HABITACION */
+#carouselExampleCaptions {
+    max-width: 100% !important;
+    box-shadow: #2a4b72 0px 30px 30px -20px;
+    border-radius: 40px;
+}
+
+.cH img {
+    max-width: 100% !important;
+    object-fit: cover !important;
+    border-radius: 40px;
+    padding: 10px;
+    border: 5px solid rgb(255, 255, 255);
+}
+
+@media screen and (max-width:1112px) {
+    #registrarHabitacion {
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center !important;
+    }
+}
+
+@media screen and (max-width:600px) {
+    #registrarHabitacion {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Registrar habitacion h1 y carrousel */
+#registrarHabitacion {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}

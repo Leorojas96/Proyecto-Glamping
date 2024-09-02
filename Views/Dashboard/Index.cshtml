@@ -1,0 +1,61 @@
+﻿@model DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Glamping2</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div>
+        <h1>Dashboard</h1>
+        <div>
+            <h2>Reservas Realizadas</h2>
+            <canvas id="reservasChart"></canvas>
+        </div>
+        <div>
+            <h2>Total General</h2>
+            <p>@Model.TotalGeneral.ToString("C")</p>
+        </div>
+    </div>
+
+    <script>
+        // Obtén el contexto del canvas
+        const ctx = document.getElementById('reservasChart').getContext('2d');
+
+        // Asegúrate de que los datos se serialicen correctamente
+        const reservasData = @Html.Raw(Json.Serialize(Model.Reservas));
+
+        // Mapea las fechas y los montos de las reservas
+        const dates = reservasData.map(r => new Date(r.fecha).toLocaleDateString());
+        const amounts = reservasData.map(r => r.total);
+
+        // Crea la gráfica
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dates,
+                datasets: [{
+                    label: 'Monto de Reservas',
+                    data: amounts,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿@model Glamping2.Models.Permiso
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/CSS/tipoHabitacion.css">
+    <link rel="stylesheet" href="/CSS/PagPrincipal.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" href="/imagenes/icono.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <h1>Crear Permiso</h1>
+
+        <form class="form" asp-action="Create">
+            <div class="nav1">
+                <input placeholder="Nombre del Permiso" asp-for="NomPermiso" class="input" required="" title="Nombre del Permiso" />
+                <span asp-validation-for="NomPermiso" class="text-danger"></span>
+            </div>
+
+            <div class="nav1">
+                <label for="estado">Estado</label>
+                <select asp-for="EstadoPermiso" class="select">
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+                <span asp-validation-for="EstadoPermiso" class="text-danger"></span>
+            </div>
+
+            <div class="div">
+                <input value="Guardar" type="submit" class="login-button" />
+                <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Permisos")'" />
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

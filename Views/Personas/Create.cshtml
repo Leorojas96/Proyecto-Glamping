@@ -1,0 +1,96 @@
+﻿@model Glamping2.Models.Persona
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/CSS/tipoHabitacion.css">
+    <link rel="stylesheet" href="/CSS/PagPrincipal.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" href="/imagenes/icono.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <h1>Crear Persona</h1>
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label for="TipoDoc">Tipo de documento</label>
+                <select asp-for="TipoDoc" class="form-select">
+                    <option value="Cedula">Cedula</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                    <option value="CedulaExtranjeria">Cedula Extranjeria</option>
+                </select>
+                <span asp-validation-for="TipoDoc" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="DocPersona" class="form-label">Nro. documento</label>
+                <input asp-for="DocPersona" class="form-control" />
+                <span asp-validation-for="DocPersona" class="text-danger"></span>
+
+                <label asp-for="NomPersona" class="form-label">Nombres</label>
+                <input asp-for="NomPersona" class="form-control" />
+                <span asp-validation-for="NomPersona" class="text-danger"></span>
+            </div>
+                
+            <div class="form-group mb-3">
+                <label asp-for="ApePersona" class="form-label">Apellidos</label>
+                <input asp-for="ApePersona" class="form-control" />
+                <span asp-validation-for="ApePersona" class="text-danger"></span>
+
+                <label asp-for="Tel" class="form-label">Telefono/Celular</label>
+                <input asp-for="Tel" class="form-control" />
+                <span asp-validation-for="Tel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="FechaNaci" class="form-label">Fecha de Nacimiento</label>
+                <input asp-for="FechaNaci" type="date" class="form-control" />
+                <span asp-validation-for="FechaNaci" class="text-danger"></span>
+
+                <label asp-for="Direcion" class="form-label">Dirección</label>
+                <input asp-for="Direcion" class="form-control" />
+                <span asp-validation-for="Direcion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Nacionalidad" class="form-label">Nacionalidad</label>
+                <input asp-for="Nacionalidad" class="form-control" />
+                <span asp-validation-for="Nacionalidad" class="text-danger"></span>
+
+                <label asp-for="Ciudad" class="form-label">Ciudad</label>
+                <input asp-for="Ciudad" class="form-control" />
+                <span asp-validation-for="Ciudad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <input value="Guardar" type="submit" class="login-button" />
+                <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Home")'" />
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+</body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

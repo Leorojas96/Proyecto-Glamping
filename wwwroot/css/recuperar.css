@@ -1,0 +1,47 @@
+.btn-outline-success {
+    color: #f0e6d6 !important;
+    background-color: #c2a77d !important;
+    border-color: #c77b4a !important;
+}
+.botone {
+    display: inline-block;
+    background-color: var(--terracota);
+    color: var(--arena-dorada); /* Color del texto del botón */
+    border: 2px solid var(--ocre);
+    border-radius: 5px;
+    padding: 15px 20px;
+    transition: background-color 0.3s ease;
+    align-items: center;
+}
+
+:root {
+    --arena-dorada: #D8CBAF;
+    --terracota: #C77B4A;
+    --azul-profundo: #2A4B7C;
+    --ocre: #C2A77D;
+    --verde-cactus: #A3C6A1;
+}
+
+body {
+    
+}
+.container,
+.container2,
+.container3,
+.container4 {
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 40px;
+    background-color: var(--arena-dorada);
+    background-image: linear-gradient(to bottom, #F5F5DC, #FFFFE0);
+    box-shadow: #2a4b7c 0px 30px 30px -20px;
+}
+
+.bg-white {
+    background-image: linear-gradient(to right, #004080, #cc5500); /* Reemplaza con los colores deseados */
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

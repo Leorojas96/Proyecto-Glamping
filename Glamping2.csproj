@@ -1,0 +1,65 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\NewFolder1\**" />
+    <Compile Remove="Views\Permisoes\**" />
+    <Compile Remove="wwwroot\imagenes\NewFolder\**" />
+    <Content Remove="Views\NewFolder1\**" />
+    <Content Remove="Views\Permisoes\**" />
+    <Content Remove="wwwroot\imagenes\NewFolder\**" />
+    <EmbeddedResource Remove="Views\NewFolder1\**" />
+    <EmbeddedResource Remove="Views\Permisoes\**" />
+    <EmbeddedResource Remove="wwwroot\imagenes\NewFolder\**" />
+    <None Remove="Views\NewFolder1\**" />
+    <None Remove="Views\Permisoes\**" />
+    <None Remove="wwwroot\imagenes\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\HomeController1.cs" />
+    <Compile Remove="Controllers\HomeController2.cs" />
+    <Compile Remove="Models\Class.cs" />
+    <Compile Remove="Models\Class1.cs" />
+    <Compile Remove="Models\UserRoleService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Models\Class.cs" />
+    <Content Remove="Models\Class1.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Models\DashboardViewModel.cs" />
+    <Content Include="Models\ErrorViewModel.cs" />
+    <Content Include="Models\GLAMPINGContext.cs" />
+    <Content Include="Models\Habitacione.cs" />
+    <Content Include="Models\Login.cs" />
+    <Content Include="Models\Paquete.cs" />
+    <Content Include="Models\PaqueteServicio.cs" />
+    <Content Include="Models\Permiso.cs" />
+    <Content Include="Models\Persona.cs" />
+    <Content Include="Models\Reserva.cs" />
+    <Content Include="Models\Role.cs" />
+    <Content Include="Models\RolesPermiso.cs" />
+    <Content Include="Models\Servicio.cs" />
+    <Content Include="Models\TipoHabitacion.cs" />
+    <Content Include="Models\Usuario.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.33" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.33" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.33">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.17" />
+  </ItemGroup>
+
+</Project>

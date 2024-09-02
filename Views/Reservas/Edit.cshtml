@@ -1,0 +1,94 @@
+﻿@model Glamping2.Models.Reserva
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/CSS/tipoHabitacion.css">
+    <link rel="stylesheet" href="/CSS/PagPrincipal.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" href="/imagenes/icono.jpg">
+</head>
+
+<div>
+
+    <h1>Editar</h1>
+
+
+
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdReservas" />
+        <div class="row">
+            <div class="col-md-6" >
+                <label asp-for="FechaReserva" class="control-label">Fecha Reserva</label>
+                <input asp-for="FechaReserva" class="form-control" type="date" readonly />
+                <span asp-validation-for="FechaReserva" class="text-danger"></span>
+                
+                 <label asp-for="FechaFin" class="control-label" >Fecha Fin</label>
+                <input asp-for="FechaFin" class="form-control" type="date" />
+                <span asp-validation-for="FechaFin" class="text-danger"></span>
+
+                
+            </div>
+            <div class="col-md-6">
+                <label asp-for="FechaInicio" class="control-label">Fecha Inicio</label>
+                <input asp-for="FechaInicio" class="form-control" type="date" />
+                <span asp-validation-for="FechaInicio" class="text-danger"></span>
+            
+                <label asp-for="NroPersonas" class="control-label">Número de Personas</label>
+                <input asp-for="NroPersonas" class="form-control" />
+                <span asp-validation-for="NroPersonas" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+           
+                <label asp-for="Abono" class="control-label"></label>
+                <input asp-for="Abono" class="form-control" value="@Model.Abono.ToString("0")" />
+                <span asp-validation-for="Abono" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Estado">Estado</label>
+                    <select asp-for="EstadoReserva" class="form-select">
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Confrimada">Confrimada</option>
+                        <option value="Finalizada">Finalizada</option>
+                        <option value="Cancelada">Cancelada</option>
+                    </select>
+                    <span asp-validation-for="EstadoReserva" class="text-danger"></span>
+                </div>
+            
+                
+            </div>
+            <div class="col-md-6">
+                <label asp-for="IdUsuario" class="control-label">Usuario</label>
+                <input type="hidden" asp-for="IdUsuario" value="@ViewData["IdUsuario"]" />
+                <input type="text" class="form-control" value="@ViewData["NombreUsuario"]" readonly />
+            </div>
+
+            <div class=" col-md-6">
+                <label asp-for="IdPaquetes" class="control-label">Paquete</label>
+                <select asp-for="IdPaquetes" class="form-control" asp-items="ViewBag.IdPaquetes"></select>
+                <span asp-validation-for="IdPaquetes" class="text-danger"></span>
+            </div>
+            <input asp-for="Total" type="hidden" />
+            <nav id="div_btn">
+                <input value="Guardar" type="submit" class="login-button" />
+                <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Habitaciones")'" />
+            </nav>
+        </div>
+        </form>
+    
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

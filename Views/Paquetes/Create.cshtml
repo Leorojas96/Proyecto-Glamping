@@ -1,0 +1,77 @@
+﻿@model Glamping2.Models.Paquete
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/CSS/tipoHabitacion.css">
+    <link rel="stylesheet" href="/CSS/PagPrincipal.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="/imagenes/icono.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <h1>Crear Paquete</h1>
+        <form class="form" asp-action="Create">
+            <div class="nav1">
+                <label asp-for="NomPaquete" class="form-label">Nombre</label>
+                <input placeholder="Nombre del Paquete" asp-for="NomPaquete" class="form-control" required title="Nombre del Paquete" />
+                <span asp-validation-for="NomPaquete" class="text-danger"></span>
+            </div>
+
+            <div class="nav1">
+                <label asp-for="Descripcion" class="form-label">Descripción</label>
+                <input placeholder="Descripción" asp-for="Descripcion" class="form-control" required title="Descripción" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+
+            <div class="nav1">
+                <label asp-for="IdServicios" class="form-label">Servicios</label>
+                <select asp-for="IdServicios" class="form-select" asp-items="ViewBag.IdServicios"></select>
+                <span asp-validation-for="IdServicios" class="text-danger"></span>
+            </div>
+
+            <div class="nav1">
+                <label asp-for="IdHabitacion" class="form-label">Habitación</label>
+                <select asp-for="IdHabitacion" class="form-select" asp-items="ViewBag.IdHabitacion"></select>
+                <span asp-validation-for="IdHabitacion" class="text-danger"></span>
+            </div>
+
+            <div class="nav1">
+                <label for="Estado">Estado</label>
+                <select asp-for="Estado" class="form-select">
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+            
+                
+                
+            <input type="hidden" asp-for="Precio" />
+            
+
+            <div id="div_btn">
+                <input value="Guardar" type="submit" class="login-button" />
+                <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Paquetes")'" />
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

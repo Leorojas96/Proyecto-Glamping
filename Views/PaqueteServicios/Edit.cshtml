@@ -1,0 +1,39 @@
+﻿@model Glamping2.Models.PaqueteServicio
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>PaqueteServicio</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdPaqueteServicio" />
+            <div class="form-group">
+                <label asp-for="IdServicios" class="control-label"></label>
+                <select asp-for="IdServicios" class="form-control" asp-items="ViewBag.IdServicios"></select>
+                <span asp-validation-for="IdServicios" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdPaquetes" class="control-label"></label>
+                <select asp-for="IdPaquetes" class="form-control" asp-items="ViewBag.IdPaquetes"></select>
+                <span asp-validation-for="IdPaquetes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

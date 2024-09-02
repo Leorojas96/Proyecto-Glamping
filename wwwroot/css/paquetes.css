@@ -1,0 +1,184 @@
+/* Crear paquetes */
+#crearPaquetes {
+    width: 100%;
+    padding: 20px;
+    border-radius: 40px;
+    padding: 15px;
+    border: 5px solid rgb(255, 255, 255);
+    margin-top: 10px;
+}
+
+@media screen and (max-width:900px) {
+    #crearPaquetes{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+@media screen and (max-width:900px) {
+    .nav{
+        width: 80% !important;
+    }
+}
+
+.nav_total{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 5px;
+}
+
+@media screen and (max-width:900px) {
+    .nav_total{
+        width: 80% !important;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* INPUTS Y SELECT DE CREAR PAQUETES */
+.textarea{
+    min-width: 150% !important;
+    height: 130px;
+}
+
+@media screen and (max-width:900px) {
+    .textarea{
+        margin-bottom: 10px;
+    }
+
+    .input, .select{
+        min-width: 80%;
+    }
+}
+
+.grande{
+    width: 100% !important;
+}
+
+/* CARRUSEL PAQUETES */
+#carouselExampleSlidesOnly {
+    width: 30%;
+    height: 170px;
+    border-radius: 40px;
+}
+
+.cP img {
+    width: 100% !important;
+    height: 170px !important;
+    object-fit: cover !important;
+    border-radius: 40px;
+    padding: 5px;
+    border: 5px solid rgb(255, 255, 255);
+}
+
+@media screen and (max-width:900px) {
+    #carouselExampleSlidesOnly {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width:670px) {
+    #carouselExampleSlidesOnly {
+        width: 80%;
+    }
+}
+
+/* PADRE DE FORMULARIO Y TABLAS*/
+.form_tabla{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/*FORMULARIO HABITACION Y SERVICIO */
+.form {
+    width: 45% !important;
+    border-radius: 40px;
+    padding: 10px;
+    border: 5px solid rgb(255, 255, 255);
+    box-shadow: #2a4b7c 0px 30px 30px -20px;
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+}
+
+.form .input, .form_tabla .select{
+   min-width: 80% !important;
+}
+
+/* TABLAS  DE LOS FORMULARIOS*/
+.form_tabla table {
+    width: 55% !important;
+}
+
+@media screen and (max-width:900px) {
+    .form{
+        width: 90% !important;
+    }
+
+    .table{
+        min-width: 90% !important;
+    }
+}
+
+/* SEPARACIÓN DE PARTE SUPERIOR */
+.div{
+display: flex;
+flex-direction: row-reverse;
+justify-content:space-between;
+align-items: center;
+}
+
+@media screen and (max-width:900px) {
+    .div{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form_tabla{
+        display: flex;
+        align-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
+/* BOTONES VOLVER, GUARDAR Y CANCELAR */
+.btn_nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width:900px) {
+    .btn_nav{
+        display: flex;
+        gap: 90px;
+    }
+}
+
+@media screen and (max-width:460px) {
+    .btn_nav{
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .div_btn{
+        order: 0;
+    }
+    .btn{
+        order: 1;
+    }
+}
