@@ -1,0 +1,46 @@
+/* BOTON GUARDAR CANCELAR */
+.div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+@media screen and (max-width:450px) {
+  .div {
+    max-width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.8rem;
+  }
+}
+
+/* FORMULARIO USUARIOS */
+.container {
+  max-width: 50% !important;
+  margin: 10px;
+}
+
+.form {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input {
+  min-width: 90% !important;
+}
+
+@media screen and (max-width:556px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+}

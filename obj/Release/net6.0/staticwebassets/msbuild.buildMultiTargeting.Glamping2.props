@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Glamping2.props" />
+</Project>

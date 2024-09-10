@@ -1,0 +1,43 @@
+.container {
+    max-width: 360px;
+    margin-left: 500px !important;
+    margin-top: 120px !important;
+  }
+    
+  .form {
+    margin-top: 20px;
+  }
+  
+  .form .input {
+    width: 88%;
+    font-family: lateef;
+  }
+  
+  .form .forgot-password {
+    display: block;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  .form .forgot-password a {
+    font-size: 11px;
+    color: #2a4b7c;
+    text-decoration: none;
+  }
+  
+  .form .login-button {
+    width: 100%;
+  }
+  
+  .agreement {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .agreement a {
+    text-decoration: none;
+    color: #2a4b7c;
+    font-size: 10px;
+  }
+  
