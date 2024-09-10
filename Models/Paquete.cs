@@ -18,6 +18,7 @@ namespace Glamping2.Models
         public double Precio { get; set; }
         public int? IdServicios { get; set; }
         public int? IdHabitacion { get; set; }
+        public string? ImagenUrl { get; set; }
 
         public virtual Habitacione? IdHabitacionNavigation { get; set; }
         public virtual Servicio? IdServiciosNavigation { get; set; }

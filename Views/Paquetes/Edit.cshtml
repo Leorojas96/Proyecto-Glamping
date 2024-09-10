@@ -25,19 +25,19 @@
             <div class="nav1">
                 <label for="NomPaquete">Nombre</label>
                 <input type="hidden" asp-for="IdPaquetes" />
-                <input placeholder="Nombre del Paquete" asp-for="NomPaquete" class="form-control" required="" title="Nombre del Paquete" />
+                <input placeholder="Nombre del Paquete" asp-for="NomPaquete" maxlength="50" class="form-control" required="" title="Nombre del Paquete" />
                 <span asp-validation-for="NomPaquete" class="text-danger"></span>
             </div><br/>
 
             <div class="nav1">
                 <label for="Descripcion">Descripción</label>
-                <input placeholder="Descripción" asp-for="Descripcion" class="form-control" required="" title="Descripción" />
+                <input placeholder="Descripción" asp-for="Descripcion" maxlength="50" class="form-control" required="" title="Descripción" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div><br />
 
             <div class="nav1">
                 <label for="Precio">Precio</label>
-                <input placeholder="Precio" asp-for="Precio" class="form-control" required="" step="any" title="Precio" />
+                <input placeholder="Precio" asp-for="Precio" maxlength="50" class="form-control" required="" step="any" title="Precio" />
                 <span asp-validation-for="Precio" class="text-danger"></span>
             </div>
 
@@ -60,6 +60,12 @@
                 <label asp-for="IdHabitacion" class="form-label">Habitación</label>
                 <select asp-for="IdHabitacion" class="form-select" asp-items="ViewBag.IdHabitacion"></select>
                 <span asp-validation-for="IdHabitacion" class="text-danger"></span>
+            </div>
+            <div class="nav1">
+                <label for="ImagenUrl">Imagen</label>
+                <input placeholder="Imagen" asp-for="ImagenUrl" maxlength="200" class="form-control" />
+                <span asp-validation-for="ImagenUrl" class="text-danger"></span>
+
             </div>
 
             <div id="div_btn">

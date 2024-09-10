@@ -97,13 +97,18 @@
             </div>
 
             <nav id="div_btn">
-                <input value="Guardar" type="submit" class="login-button" />
-                <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Reservas")'" />
+                <input value="Guardar" type="submit" class="login-button" onclick="return confirmarEnvio();" />
+                <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Home")'" />
             </nav>
         </form>
     </div>
 
-    
+    <script>
+        function confirmarEnvio() {
+            const mensaje = "El precio del paquete cubre 2 días. Los días adicionales tienen un valor de $30,000 c/u. ¿Desea continuar?";
+            return confirm(mensaje);
+        }
+    </script>
 
     @section Scripts {
         @{

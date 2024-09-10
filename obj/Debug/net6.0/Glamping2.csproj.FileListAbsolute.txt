@@ -273,3 +273,4 @@ C:\Users\leoro\source\repos\Glamping2\bin\Debug\net6.0\runtimes\win-arm64\native
 C:\Users\leoro\source\repos\Glamping2\bin\Debug\net6.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\leoro\source\repos\Glamping2\bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\leoro\source\repos\Glamping2\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\leoro\source\repos\Glamping2\obj\Debug\net6.0\Glamping2.sourcelink.json

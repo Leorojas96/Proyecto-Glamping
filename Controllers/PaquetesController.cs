@@ -59,8 +59,50 @@ namespace Glamping2.Controllers
             }
         }
 
-        // GET: Paquetes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> PaquetesDisponibles()
+        {
+            try
+            {
+                var paquetes = await _context.Paquetes
+                    .Include(p => p.IdHabitacionNavigation)
+                    .Include(p => p.IdServiciosNavigation)
+                    .Where(p => p.Estado == "Activo")
+                    .ToListAsync();
+
+                // Configura ViewBag.IsAdmin en esta acción también
+                var userEmail = User.Identity.Name;
+                if (userEmail != null)
+                {
+                    var userRole = await _context.Usuarios
+                        .Where(u => u.Correo == userEmail)
+                        .Select(u => u.IdRol)
+                        .FirstOrDefaultAsync();
+
+                    var role = await _context.Roles
+                        .Where(r => r.IdRol == userRole)
+                        .Select(r => r.NomRol)
+                        .FirstOrDefaultAsync();
+
+                    ViewBag.IsAdmin = role == "Administrador";
+                }
+                else
+                {
+                    ViewBag.IsAdmin = false;
+                }
+
+                ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
+
+                return View(paquetes);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
+            }
+        }
+
+
+            // GET: Paquetes/Details/5
+            public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Paquetes == null)
             {
@@ -120,22 +162,59 @@ namespace Glamping2.Controllers
 
 
         // GET: Paquetes/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            var servicios = _context.Servicios.ToList();
-            var habitacionesActivas = _context.Habitaciones
-        .Where(h => h.EstadoHabitacion == "Disponible")
-        .Select(h => new { h.IdHabitacion, h.NroHabitacion }) // Solo selecciona los campos necesarios
-        .ToList();
+            try
+            {
+                var userEmail = User.Identity.Name;
 
-            // Asigna la lista de habitaciones activas a ViewBag
-            ViewBag.IdHabitacion = new SelectList(habitacionesActivas, "IdHabitacion", "NroHabitacion");
+                if (userEmail == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
 
-            ViewBag.IdServicios = new SelectList(servicios, "IdServicios", "NomServicio");
-           
+                // Obtener el rol del usuario actual
+                var userRole = await _context.Usuarios
+                    .Where(u => u.Correo == userEmail)
+                    .Select(u => u.IdRol)
+                    .FirstOrDefaultAsync();
 
-            return View();
+                if (userRole == 0)
+                {
+                    return RedirectToAction("AccessDenied", "Account");
+                }
+
+                // Obtener el nombre del rol
+                var role = await _context.Roles
+                    .Where(r => r.IdRol == userRole)
+                    .Select(r => r.NomRol)
+                    .FirstOrDefaultAsync();
+
+                // Determina si el usuario es administrador
+                ViewBag.IsAdmin = role == "Administrador";
+
+                // Obtener los servicios
+                var servicios = _context.Servicios.ToList();
+
+                // Obtener habitaciones activas (disponibles)
+                var habitacionesActivas = _context.Habitaciones
+                    .Where(h => h.EstadoHabitacion == "Disponible")
+                    .Select(h => new { h.IdHabitacion, h.NroHabitacion }) // Solo selecciona los campos necesarios
+                    .ToList();
+
+                // Asignar la lista de habitaciones activas y servicios a ViewBag
+                ViewBag.IdHabitacion = new SelectList(habitacionesActivas, "IdHabitacion", "NroHabitacion");
+                ViewBag.IdServicios = new SelectList(servicios, "IdServicios", "NomServicio");
+
+                return View();
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores y pasar el mensaje de error a la vista de error
+                return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
+            }
         }
+
 
         // POST: Paquetes/Create
         [HttpPost]
@@ -220,10 +299,9 @@ namespace Glamping2.Controllers
             return View(paquete);
         }
 
-        // POST: Paquetes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdPaquetes,NomPaquete,Descripcion,Estado,Precio,IdServicios,IdHabitacion")] Paquete paquete)
+        public async Task<IActionResult> Edit(int id, [Bind("IdPaquetes,NomPaquete,Descripcion,Estado,Precio,IdServicios,IdHabitacion,ImagenUrl")] Paquete paquete)
         {
             if (id != paquete.IdPaquetes)
             {
@@ -256,6 +334,7 @@ namespace Glamping2.Controllers
 
             return View(paquete);
         }
+
 
         // GET: Paquetes/Delete/5
         public async Task<IActionResult> Delete(int? id)

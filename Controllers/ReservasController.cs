@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Glamping2.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Glamping2.Controllers
 {
@@ -20,81 +21,114 @@ namespace Glamping2.Controllers
         }
 
         public async Task<IActionResult> Index()
-{
-    try
-    {
-        var userEmail = User.Identity.Name;
-
-        if (userEmail == null)
         {
-            return RedirectToAction("Login", "Account");
+            try
+            {
+                var userEmail = User.Identity.Name;
+
+                if (userEmail == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+
+                var userRole = await _context.Usuarios
+                    .Where(u => u.Correo == userEmail)
+                    .Select(u => u.IdRol)
+                    .FirstOrDefaultAsync();
+
+                if (userRole == 0)
+                {
+                    return RedirectToAction("AccessDenied", "Account");
+                }
+
+                var role = await _context.Roles
+                    .Where(r => r.IdRol == userRole)
+                    .Select(r => r.NomRol)
+                    .FirstOrDefaultAsync();
+
+                ViewBag.IsAdmin = role == "Administrador";
+
+                // Obtener todas las reservas sin filtrar por EstadoReserva
+                var reservas = await _context.Reservas
+                    .Include(r => r.IdPaquetesNavigation)
+                    .Include(r => r.IdUsuarioNavigation)
+                        .ThenInclude(u => u.IdPersonaNavigation) // Asegúrate de incluir Persona
+                    .ToListAsync();
+
+                return View(reservas);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
+            }
         }
-
-        var userRole = await _context.Usuarios
-            .Where(u => u.Correo == userEmail)
-            .Select(u => u.IdRol)
-            .FirstOrDefaultAsync();
-
-        if (userRole == 0)
-        {
-            return RedirectToAction("AccessDenied", "Account");
-        }
-
-        var role = await _context.Roles
-            .Where(r => r.IdRol == userRole)
-            .Select(r => r.NomRol)
-            .FirstOrDefaultAsync();
-
-        ViewBag.IsAdmin = role == "Administrador";
-
-        // Obtener todas las reservas sin filtrar por EstadoReserva
-        var reservas = await _context.Reservas
-            .Include(r => r.IdPaquetesNavigation)
-            .Include(r => r.IdUsuarioNavigation)
-                .ThenInclude(u => u.IdPersonaNavigation) // Asegúrate de incluir Persona
-            .ToListAsync();
-
-        return View(reservas);
-    }
-    catch (Exception ex)
-    {
-        return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
-    }
-}
 
         [HttpGet]
-        public async Task<IActionResult> Create()
+        [Authorize]
+        public async Task<IActionResult> Create(int paqueteId)
         {
-            var paquetesActivos = await _context.Paquetes
-        .Where(p => p.Estado == "Activo")
-        .ToListAsync();
-            ViewBag.Paquetes = paquetesActivos;
-
-            var usuarioCorreo = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
-            if (usuarioCorreo != null)
+            try
             {
-                var usuarioLogueado = await _context.Usuarios
-                    .Include(u => u.IdPersonaNavigation)
-                    .FirstOrDefaultAsync(u => u.Correo == usuarioCorreo);
-
-                if (usuarioLogueado != null)
+                if (!User.Identity.IsAuthenticated)
                 {
-                    ViewBag.UsuarioNombre = usuarioLogueado.IdPersonaNavigation?.NomPersona;
-                    ViewBag.IdUsuario = usuarioLogueado.IdUsuario;
-
+                    return RedirectToAction("Login", "Account");
                 }
+
+                // Configura ViewBag.IsAdmin para la acción Create
+                var userEmail = User.Identity.Name;
+                if (userEmail != null)
+                {
+                    var userRole = await _context.Usuarios
+                        .Where(u => u.Correo == userEmail)
+                        .Select(u => u.IdRol)
+                        .FirstOrDefaultAsync();
+
+                    var role = await _context.Roles
+                        .Where(r => r.IdRol == userRole)
+                        .Select(r => r.NomRol)
+                        .FirstOrDefaultAsync();
+
+                    ViewBag.IsAdmin = role == "Administrador";
+                }
+                else
+                {
+                    ViewBag.IsAdmin = false;
+                }
+
+                var paquetesActivos = await _context.Paquetes
+                    .Where(p => p.Estado == "Activo")
+                    .ToListAsync();
+                ViewBag.Paquetes = paquetesActivos;
+
+                var usuarioCorreo = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+                if (usuarioCorreo != null)
+                {
+                    var usuarioLogueado = await _context.Usuarios
+                        .Include(u => u.IdPersonaNavigation)
+                        .FirstOrDefaultAsync(u => u.Correo == usuarioCorreo);
+
+                    if (usuarioLogueado != null)
+                    {
+                        ViewBag.UsuarioNombre = usuarioLogueado.IdPersonaNavigation?.NomPersona;
+                        ViewBag.IdUsuario = usuarioLogueado.IdUsuario;
+                    }
+                }
+
+                var reserva = new Reserva
+                {
+                    FechaReserva = DateTime.Now.Date,
+                    FechaInicio = DateTime.Now.Date.AddDays(1),
+                    FechaFin = DateTime.Now.Date.AddDays(2),
+                    EstadoReserva = "Pendiente",
+                    IdPaquetes = paqueteId
+                };
+
+                return View(reserva);
             }
-
-            // Crear una nueva instancia de Reserva con fechas predeterminadas
-            var reserva = new Reserva
+            catch (Exception ex)
             {
-                FechaReserva = DateTime.Now.Date,
-                FechaInicio = DateTime.Now.Date.AddDays(1),
-                FechaFin = DateTime.Now.Date.AddDays(2),
-                EstadoReserva = "Pendiente"
-            };
-
-            return View(reserva);
+                return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
+            }
         }
 
         [HttpPost]

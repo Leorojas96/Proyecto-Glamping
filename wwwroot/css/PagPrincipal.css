@@ -230,3 +230,28 @@ option {
         transform: scale(0.95);
         box-shadow: #2a4b7c 0px 15px 10px -10px;
     }
+
+
+.card {
+    margin-bottom: 20px;
+}
+
+    .card img {
+        height: 200px;
+        object-fit: cover;
+    }
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1.1rem;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745;
+}

@@ -25,12 +25,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdServicios" />
             <div class="nav1">
-                <label asp-for="NomServicio" class="control-label">Nombre</label>
+                <label asp-for="NomServicio" maxlength="50" class="control-label">Nombre</label>
                 <input asp-for="NomServicio" class="form-control" />
                 <span asp-validation-for="NomServicio" class="text-danger"></span>
             </div>
             <div class="nav1">
-                <label asp-for="Descripcion" class="control-label"></label>
+                <label asp-for="Descripcion" maxlength="50" class="control-label"></label>
                 <input asp-for="Descripcion" class="form-control" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
@@ -49,10 +49,16 @@
                 <input asp-for="Precio" class="form-control" />
                 <span asp-validation-for="Precio" class="text-danger"></span>
             </div>
+            <div class="nav1">
+                <label for="ImagenUrl">Imagen</label>
+                <input placeholder="Imagen" asp-for="ImagenUrl" maxlength="200" class="form-control" />
+                <span asp-validation-for="ImagenUrl" class="text-danger"></span>
+            </div>
             <div id="div_btn">
                 <input value="Guardar" type="submit" class="login-button" />
                 <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Servicios")'" />
             </div>
+            
         </form>
     </div>
     

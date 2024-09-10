@@ -73,8 +73,52 @@
       "PackagePath": "staticwebassets\\imagenes\\Habitaciones.jpeg"
     },
     {
+      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Paquetes\\Paquete2.png",
+      "PackagePath": "staticwebassets\\imagenes\\Paquetes\\Paquete2.png"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Paquetes\\Paquete3.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Paquetes\\Paquete3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Paquetes\\Paquete4.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Paquetes\\Paquete4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Paquetes\\Paquete5.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\Paquetes\\Paquete5.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Paquetes\\Paquete6.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Paquetes\\Paquete6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Paquetes\\Paquete8.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Paquetes\\Paquete8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Paquetes\\Paquete9.png",
+      "PackagePath": "staticwebassets\\imagenes\\Paquetes\\Paquete9.png"
+    },
+    {
       "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Restaurante.png",
       "PackagePath": "staticwebassets\\imagenes\\Restaurante.png"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Servicios\\Servicio1.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Servicios\\Servicio1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Servicios\\Servicio2.png",
+      "PackagePath": "staticwebassets\\imagenes\\Servicios\\Servicio2.png"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Servicios\\Servicio3.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Servicios\\Servicio3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Servicios\\Servicio4.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\Servicios\\Servicio4.jpeg"
     },
     {
       "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Toures.jpeg",

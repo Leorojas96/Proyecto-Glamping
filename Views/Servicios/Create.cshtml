@@ -25,12 +25,12 @@
         <form class="form" asp-action="Create">
 
             <div class="nav1">
-                <input placeholder="Nombre del Servicio" asp-for="NomServicio" class="input" required="" title="Nombre del Servicio" />
+                <input placeholder="Nombre del Servicio" asp-for="NomServicio" maxlength="50" class="input" required="" title="Nombre del Servicio" />
                 <span asp-validation-for="NomServicio" class="text-danger"></span>
             </div>
 
             <div class="nav1">
-                <input placeholder="Descripción" asp-for="Descripcion" class="input" required="" title="Descripción" />
+                <input placeholder="Descripción" asp-for="Descripcion" maxlength="50" class="input" required="" title="Descripción" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
 
@@ -40,7 +40,6 @@
                     <option value="Recreación">Recreación</option>
                     <option value="Salud">Salud</option>
                     <option value="Alimentación">Alimentación</option>
-                     <!-- Puedes añadir más opciones si es necesario -->
                 </select>
                 <span asp-validation-for="TipoServicio" class="text-danger"></span>
             </div>
@@ -48,6 +47,11 @@
             <div class="nav1">
                 <input placeholder="Precio" asp-for="Precio" class="input" required="" step="any" title="Precio" />
                 <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="nav1">
+                <label for="ImagenUrl">Imagen</label>
+                <input placeholder="Imagen" asp-for="ImagenUrl" maxlength="200" class="form-control" />
+                <span asp-validation-for="ImagenUrl" class="text-danger"></span>
             </div>
 
             <div id="div_btn">

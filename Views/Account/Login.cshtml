@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6" >
         <form asp-action="Login" method="post">
-            <h1>Iniciar Sesión</h1>
+        <h1 class="text-center mb-4">Iniciar Sesión</h1>
             @Html.AntiForgeryToken()
             <input placeholder="Correo" id="email" name="Correo" type="email" class="input" required /><br />
             <input placeholder="Contraseña" id="password" name="Contraseña" type="password" class="input" required /><br />

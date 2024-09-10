@@ -20,6 +20,7 @@
     <div id="menusection">
 
         <section id="crearHabitacion_fotos">
+            <div class="sec">
             <form asp-action="Create" method="post">
                 @Html.AntiForgeryToken()
 
@@ -28,10 +29,10 @@
 
                 <div class="form-group">
                     <label asp-for="NroHabitacion" class="control-label">Nro. Habitación</label>
-                    <input asp-for="NroHabitacion" class="form-control" value"" />
+                    <input asp-for="NroHabitacion" maxlength="50"  class="form-control" value"" />
 
                     <label asp-for="Descripcion" class="control-label">Descripción</label>
-                    <input asp-for="Descripcion" class="form-control" />
+                    <input asp-for="Descripcion" maxlength="50" class="form-control" />
                 </div>
                 <div class="form-group">
                     <label asp-for="IdTipoHabita" class="control-label">Tipo de Habitación</label>
@@ -83,6 +84,7 @@
                     <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Habitaciones")'" />
                 </nav>
             </form>
+            </div>
             <div id="registrarHabitacion">
                 <h1>Registrar habitación</h1>
                 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">

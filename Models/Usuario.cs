@@ -11,8 +11,8 @@ namespace Glamping2.Models
         }
 
         public int IdUsuario { get; set; }
-        public string Correo { get; set; } = null!;
-        public string Contraseña { get; set; } = null!;
+        public string Correo { get; set; }
+        public string Contraseña { get; set; }
         public int? IdPersona { get; set; }
         public int? IdRol { get; set; }
 

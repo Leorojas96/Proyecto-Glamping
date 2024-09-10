@@ -120,10 +120,47 @@ namespace Glamping2.Controllers
         }
 
         // GET: TipoHabitacions/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            try
+            {
+                var userEmail = User.Identity.Name;
+
+                if (userEmail == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+
+                // Obtener el rol del usuario actual
+                var userRole = await _context.Usuarios
+                    .Where(u => u.Correo == userEmail)
+                    .Select(u => u.IdRol)
+                    .FirstOrDefaultAsync();
+
+                if (userRole == 0)
+                {
+                    return RedirectToAction("AccessDenied", "Account");
+                }
+
+                // Obtener el nombre del rol
+                var role = await _context.Roles
+                    .Where(r => r.IdRol == userRole)
+                    .Select(r => r.NomRol)
+                    .FirstOrDefaultAsync();
+
+                // Determina si el usuario es administrador
+                ViewBag.IsAdmin = role == "Administrador";
+
+                // Retorna la vista de creación
+                return View();
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores y pasar el mensaje de error a la vista de error
+                return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
+            }
         }
+
 
         // POST: TipoHabitacions/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.

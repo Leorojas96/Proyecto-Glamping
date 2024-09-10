@@ -6,9 +6,9 @@
     <title>@ViewData["Title"] - Glamping2</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/recuperar.css" asp-append-version="true" />
-    
+
     <link rel="icon" href="~/imagenes/icono.jpg" />
-    
+
 </head>
 <body>
     <header>
@@ -22,26 +22,11 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <a class="nav-link" asp-area="" asp-controller="Habitaciones" asp-action="Index">Habitaciones</a>
-                            }
-                            else
-                            {
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Habitaciones</a>
-                            }
+                            <a class="nav-link" asp-area="" asp-controller="Paquetes" asp-action="PaquetesDisponibles">Paquetes</a>
                         </li>
                         <li class="nav-item">
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <a class="nav-link" asp-area="" asp-controller="Servicios" asp-action="Index">Servicios</a>
-                            }
-                            else
-                            {
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Servicios</a>
-                            }
+                            <a class="nav-link" asp-area="" asp-controller="Servicios" asp-action="ServiciosDisponibles">Servicios</a>
                         </li>
-
                         <li class="nav-item">
                             @if (User.Identity.IsAuthenticated)
                             {
@@ -52,26 +37,24 @@
                                 <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Reservar</a>
                             }
                         </li>
-                        <li class="nav-item">
-                            @if (User.Identity.IsAuthenticated)
-                        {
-                            
-                                <a class="nav-link" asp-area="" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
 
-                            }
-                            else
-                            {
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Dashboard</a>
-                            }
-                        </li>
                         
+                        @if (User.Identity.IsAuthenticated && (ViewBag.IsAdmin ?? false))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Habitaciones" asp-action="Index">Admin</a>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <div class="auth-buttons">
                     @if (User.Identity.IsAuthenticated)
                     {
                         <form action="@Url.Action("Logout", "Account")" method="post" class="d-inline">
-                            @Html.AntiForgeryToken() <!-- Añadir esta línea para el token de seguridad -->
+                            @Html.AntiForgeryToken()
                             <button type="submit" class="btn btn-outline-success">Cerrar Sesión</button>
                         </form>
                     }
@@ -105,3 +88,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
