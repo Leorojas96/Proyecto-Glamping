@@ -1,0 +1,87 @@
+#detalles {
+    width: 100%;
+    display: flex;
+    padding: 15px;
+    gap: 10px;
+}
+
+/* CONTAINER */
+.container {
+    min-width: 50% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width:1112px) {
+    #detalles {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        width: 90% !important;
+    }
+
+    .registroDetalles {
+        order: 0;
+    }
+
+    .container {
+        order: 1;
+    }
+}
+
+/* Registrar servicio h1 y carrousel */
+.resgistroDetalles {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+@media screen and (max-width:1112px) {
+    .resgistroDetalles {
+        width: 500px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center !important;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .resgistroDetalles {
+        width: 90% !important;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .textarea{
+        height: 230px;
+    }
+}
+
+/* TEXTAREA DETALLES SERVICIOS */
+.textarea {
+    min-width: 100%;
+    font-size: 14px;
+    height: 120px;
+    margin-bottom: 10px;
+}
+
+/* CARRUSEL DETALLES SERVICIOS */
+#carouselExampleCaptions{
+    max-width: 100% !important;
+    box-shadow: #2a4b72 0px 30px 30px -20px;
+    border-radius: 40px;
+}
+
+.cH img{
+    max-width: 100% !important;
+    object-fit: cover !important;
+    border-radius: 40px;
+    padding: 10px;
+    border: 5px solid rgb(255, 255, 255);
+}
