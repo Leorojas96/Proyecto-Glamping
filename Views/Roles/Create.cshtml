@@ -1,17 +1,17 @@
 ﻿@model Glamping2.Models.Role
 
 @{
-    ViewData["Title"] = "Crear Rol";
+    ViewData["Title"] = "Create";
 }
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="/CSS/tipoHabitacion.css">
+    <title>Crear Rol</title>
+    <link rel="stylesheet" href="/CSS/roles.css">
     <link rel="stylesheet" href="/CSS/PagPrincipal.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -20,31 +20,113 @@
 </head>
 
 <body>
-    <div>
-        <h1>Crear Rol</h1>
+    <div class="container">
+        <section id="tabla" class="navbar navbar-light bg-light">
+            <h1>Crear Rol</h1>
+            <form asp-action="Create" method="post" class="form">
+            <div id="nombreRolYEstado">
+                <div class="nombre_estado">
+                    <label asp-for="NomRol">Nombre Rol</label>
+                    <input type="text" placeholder="Cliente" asp-for="NomRol" class="form-control">
+                    <span asp-validation-for="NomRol" class="text-danger"></span>
+                </div>
 
-        <form class="form" asp-action="Create">
-            <div class="nav1">
-                <input placeholder="Nombre del Rol" asp-for="NomRol" class="input" required="" title="Nombre del Rol" />
-                <span asp-validation-for="NomRol" class="text-danger"></span>
+                <div class="nombre_estado">
+                    <label asp-for="Estado">Estado</label>
+                    <select asp-for="Estado" class="form-select">
+                        <option value="">-- Seleccionar Estado --</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                    <span asp-validation-for="Estado" class="text-danger"></span>
+                </div>
             </div>
 
-            <div class="div">
-                <input value="Guardar" type="submit" class="login-button" />
-                <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Roles")'" />
+            
+                <h2 class="heading">Permisos a Módulos</h2>
+                
+                    <div id="permisos_botones">
+                        <div class="seleccionar">
+                            <div class="permisos">
+                                <label for="PermisoDashboard">Panel de Control</label>
+                                <label for="PermisoRoles">Roles</label>
+                                <label for="PermisoUsuarios">Usuarios</label>
+                                <label for="PermisoHabitaciones">Habitaciones</label>
+                            </div>
+
+                            <div class="boton">
+                                <label class="switch">
+                                    <input type="checkbox" asp-for="PermisoDashboard" class="input">
+                                    <span class="slider"></span>
+                                </label>
+
+                                <label class="switch">
+                                    <input type="checkbox" asp-for="PermisoRoles" class="input">
+                                    <span class="slider"></span>
+                                </label>
+
+                                <label class="switch">
+                                    <input type="checkbox" asp-for="PermisoUsuarios" class="input">
+                                    <span class="slider"></span>
+                                </label>
+
+                                <label class="switch">
+                                    <input type="checkbox" asp-for="PermisoHabitaciones" class="input">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="seleccionar">
+                            <div class="permisos">
+                                <label for="PermisoServicios">Servicios</label>
+                                <label for="PermisoPaquetes">Paquetes</label>
+                                <label for="PermisoClientes">Clientes</label>
+                                <label for="PermisoReservas">Reservas</label>
+                            </div>
+
+                            <div class="boton">
+                                <label class="switch">
+                                    <input type="checkbox" asp-for="PermisoServicios" class="input">
+                                    <span class="slider"></span>
+                                </label>
+
+                                <label class="switch">
+                                    <input type="checkbox" asp-for="PermisoPaquetes" class="input">
+                                    <span class="slider"></span>
+                                </label>
+
+                                <label class="switch">
+                                    <input type="checkbox" asp-for="PermisoClientes" class="input">
+                                    <span class="slider"></span>
+                                </label>
+
+                                <label class="switch">
+                                    <input type="checkbox" asp-for="PermisoReservas" class="input">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="div">
+                        <button type="submit" class="btn btn-secondary">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
             </div>
-        </form>
+        </section>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-</body>
+    <script src="/JS/funcionClick.js"></script>
 
-</html>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
     }
-}
+</body>
+</html>

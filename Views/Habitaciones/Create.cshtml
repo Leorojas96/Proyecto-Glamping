@@ -128,24 +128,22 @@
     <script>
         function updateComodidades() {
             var comodidades = [];
+            // Selecciona todos los checkboxes que están marcados y obtiene sus valores
             document.querySelectorAll('#selecciones input[type="checkbox"]:checked').forEach(function (checkbox) {
-                comodidades.push(checkbox.nextElementSibling.textContent.trim());
+                comodidades.push(checkbox.id); // Usa el ID del checkbox como valor
             });
+            // Actualiza el input oculto con las comodidades seleccionadas
             document.getElementById('comodidades').value = comodidades.join(', ');
         }
 
-        function updateDescripcion() {
-            document.getElementById('descripcion').value = document.getElementById('textoHab').value;
-        }
-
+        // Añade el evento a los checkboxes
         document.querySelectorAll('#selecciones input[type="checkbox"]').forEach(function (checkbox) {
             checkbox.addEventListener('change', updateComodidades);
         });
 
-        document.getElementById('textoHab').addEventListener('input', updateDescripcion);
-
+        // Ejecuta la función para inicializar los valores cuando se carga la página
         updateComodidades();
-        updateDescripcion();
+
     </script>
 
     <script>

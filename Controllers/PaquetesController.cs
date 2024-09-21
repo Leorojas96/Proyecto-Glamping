@@ -161,7 +161,6 @@ namespace Glamping2.Controllers
 
 
 
-        // GET: Paquetes/Create
         public async Task<IActionResult> Create()
         {
             try
@@ -173,7 +172,6 @@ namespace Glamping2.Controllers
                     return RedirectToAction("Login", "Account");
                 }
 
-                // Obtener el rol del usuario actual
                 var userRole = await _context.Usuarios
                     .Where(u => u.Correo == userEmail)
                     .Select(u => u.IdRol)
@@ -184,36 +182,31 @@ namespace Glamping2.Controllers
                     return RedirectToAction("AccessDenied", "Account");
                 }
 
-                // Obtener el nombre del rol
                 var role = await _context.Roles
                     .Where(r => r.IdRol == userRole)
                     .Select(r => r.NomRol)
                     .FirstOrDefaultAsync();
 
-                // Determina si el usuario es administrador
                 ViewBag.IsAdmin = role == "Administrador";
 
-                // Obtener los servicios
                 var servicios = _context.Servicios.ToList();
 
-                // Obtener habitaciones activas (disponibles)
-                var habitacionesActivas = _context.Habitaciones
-                    .Where(h => h.EstadoHabitacion == "Disponible")
-                    .Select(h => new { h.IdHabitacion, h.NroHabitacion }) // Solo selecciona los campos necesarios
-                    .ToList();
+                var habitacionesNoEnPaqueteODisponibles = _context.Habitaciones
+             .Where(h => !_context.Paquetes.Any(p => p.IdHabitacion == h.IdHabitacion) && h.EstadoHabitacion == "Disponible")
+             .Select(h => new { h.IdHabitacion, h.NroHabitacion })
+             .ToList(); ;
 
-                // Asignar la lista de habitaciones activas y servicios a ViewBag
-                ViewBag.IdHabitacion = new SelectList(habitacionesActivas, "IdHabitacion", "NroHabitacion");
+                ViewBag.IdHabitacion = new SelectList(habitacionesNoEnPaqueteODisponibles, "IdHabitacion", "NroHabitacion");
                 ViewBag.IdServicios = new SelectList(servicios, "IdServicios", "NomServicio");
 
                 return View();
             }
             catch (Exception ex)
             {
-                // Manejar errores y pasar el mensaje de error a la vista de error
                 return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
             }
         }
+
 
 
         // POST: Paquetes/Create
