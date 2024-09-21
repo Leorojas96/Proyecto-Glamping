@@ -57,7 +57,43 @@ namespace Glamping2.Controllers
             }
         }
 
+        public async Task<IActionResult> ServiciosDisponibles()
+        {
+            try
+            {
+                var servicios = await _context.Servicios
+                    .ToListAsync();
 
+                // Configura ViewBag.IsAdmin en esta acción también
+                var userEmail = User.Identity.Name;
+                if (userEmail != null)
+                {
+                    var userRole = await _context.Usuarios
+                        .Where(u => u.Correo == userEmail)
+                        .Select(u => u.IdRol)
+                        .FirstOrDefaultAsync();
+
+                    var role = await _context.Roles
+                        .Where(r => r.IdRol == userRole)
+                        .Select(r => r.NomRol)
+                        .FirstOrDefaultAsync();
+
+                    ViewBag.IsAdmin = role == "Administrador";
+                }
+                else
+                {
+                    ViewBag.IsAdmin = false;
+                }
+
+                // Devuelve la vista "Disponibles" en lugar de "ServiciosDisponibles"
+                return View("Disponibles", servicios);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores: muestra una vista de error con el mensaje de excepción
+                return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
+            }
+        }
         // GET: Servicios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -121,71 +157,30 @@ namespace Glamping2.Controllers
         }
 
         // POST: Servicios/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdServicios,NomServicio,Descripcion,TipoServicio,Precio")] Servicio servicio)
+        public async Task<IActionResult> Create(Servicio servicio)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(servicio);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(servicio);
+            _context.Add(servicio);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Servicios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Servicios == null)
-            {
-                return NotFound();
-            }
-
             var servicio = await _context.Servicios.FindAsync(id);
-            if (servicio == null)
-            {
-                return NotFound();
-            }
             return View(servicio);
         }
 
         // POST: Servicios/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdServicios,NomServicio,Descripcion,TipoServicio,Precio")] Servicio servicio)
+        public async Task<IActionResult> Edit(int id, Servicio servicio)
         {
-            if (id != servicio.IdServicios)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(servicio);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ServicioExists(servicio.IdServicios))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(servicio);
+            _context.Update(servicio);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
+
 
         // GET: Servicios/Delete/5
         public async Task<IActionResult> Delete(int? id)

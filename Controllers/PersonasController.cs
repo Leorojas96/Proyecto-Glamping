@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Glamping2.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Glamping2.Controllers
 {
@@ -145,11 +146,36 @@ namespace Glamping2.Controllers
 
 
 
-        // GET: Personas/Create
-        public IActionResult Create()
+        // GET: Personas/Creat
+        [AllowAnonymous] // Permitir el acceso sin autenticación
+        public async Task<IActionResult> Create()
         {
-            return View();
+            try
+            {
+                // No verificar si el usuario está autenticado para esta vista
+
+                // Obtener lista de servicios
+                var servicios = _context.Servicios.ToList();
+
+                // Obtener lista de habitaciones activas (estado = "Disponible")
+                var habitacionesActivas = _context.Habitaciones
+                    .Where(h => h.EstadoHabitacion == "Disponible")
+                    .Select(h => new { h.IdHabitacion, h.NroHabitacion }) // Solo selecciona los campos necesarios
+                    .ToList();
+
+                // Asignar la lista de habitaciones activas y servicios a ViewBag
+                ViewBag.IdHabitacion = new SelectList(habitacionesActivas, "IdHabitacion", "NroHabitacion");
+                ViewBag.IdServicios = new SelectList(servicios, "IdServicios", "NomServicio");
+
+                return View();
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores y pasar el mensaje de error a la vista de error
+                return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
+            }
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -267,9 +293,11 @@ namespace Glamping2.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
         public async Task<IActionResult> DeleteLast()
         {
-            var lastPersona = await _context.Personas.OrderByDescending(p => p.IdPersona).FirstOrDefaultAsync();
+            var lastPersona = _context.Personas.OrderByDescending(p => p.IdPersona).FirstOrDefault();
+
 
             if (lastPersona != null)
             {

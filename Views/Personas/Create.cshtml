@@ -5,87 +5,91 @@
 }
 
 <!DOCTYPE html>
-
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="/CSS/tipoHabitacion.css">
-    <link rel="stylesheet" href="/CSS/PagPrincipal.css">
+    <link rel="stylesheet" href="/css/registro.css">
+    <link rel="stylesheet" href="/css/PagPrincipal.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" href="/imagenes/icono.jpg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
 
 <body>
-    <div>
+    <div class="container">
         <h1>Crear Persona</h1>
-
-        <form asp-action="Create">
+        <form class="form" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group mb-3">
-                <label for="TipoDoc">Tipo de documento</label>
-                <select asp-for="TipoDoc" class="form-select">
-                    <option value="Cedula">Cedula</option>
+            <div class="registro_form">
+                <select asp-for="TipoDoc" class="select">
+                    <option value="Cedula">Cédula</option>
                     <option value="Pasaporte">Pasaporte</option>
-                    <option value="CedulaExtranjeria">Cedula Extranjeria</option>
+                    <option value="CedulaExtranjeria">Cédula Extranjería</option>
                 </select>
                 <span asp-validation-for="TipoDoc" class="text-danger"></span>
-            </div>
-
-            <div class="form-group mb-3">
-                <label asp-for="DocPersona" class="form-label">Nro. documento</label>
-                <input asp-for="DocPersona" class="form-control" />
+            
+                <input asp-for="DocPersona" placeholder="Nro.Documento" id="documento" name="documento" class="input" title="Nro.Documento"/>
                 <span asp-validation-for="DocPersona" class="text-danger"></span>
-
-                <label asp-for="NomPersona" class="form-label">Nombres</label>
-                <input asp-for="NomPersona" class="form-control" />
+            
+                <input asp-for="NomPersona" placeholder="Nombres" id="nombres" name="nombres" class="input" title="Nombres"/>
                 <span asp-validation-for="NomPersona" class="text-danger"></span>
-            </div>
-                
-            <div class="form-group mb-3">
-                <label asp-for="ApePersona" class="form-label">Apellidos</label>
-                <input asp-for="ApePersona" class="form-control" />
-                <span asp-validation-for="ApePersona" class="text-danger"></span>
 
-                <label asp-for="Tel" class="form-label">Telefono/Celular</label>
-                <input asp-for="Tel" class="form-control" />
+                <input asp-for="ApePersona" placeholder="Apellidos" id="apellidos" name="apellidos" class="input" title="Apellidos"/>
+                <span asp-validation-for="ApePersona" class="text-danger"></span>
+            
+                <input asp-for="Tel" placeholder="Teléfono/Celular" id="telefono" name="telefono" class="input" title="Teléfono/Celular"/>
                 <span asp-validation-for="Tel" class="text-danger"></span>
             </div>
 
-            <div class="form-group mb-3">
+            <div class="registro_form">
+                
                 <label asp-for="FechaNaci" class="form-label">Fecha de Nacimiento</label>
-                <input asp-for="FechaNaci" type="date" class="form-control" />
+                <input asp-for="FechaNaci" type="date" class="input" />
                 <span asp-validation-for="FechaNaci" class="text-danger"></span>
 
-                <label asp-for="Direcion" class="form-label">Dirección</label>
-                <input asp-for="Direcion" class="form-control" />
+                <input asp-for="Direcion" placeholder="Dirección" id="direccion" name="direccion" class="input" title="Dirección"/>
                 <span asp-validation-for="Direcion" class="text-danger"></span>
-            </div>
+           
 
-            <div class="form-group mb-3">
-                <label asp-for="Nacionalidad" class="form-label">Nacionalidad</label>
-                <input asp-for="Nacionalidad" class="form-control" />
+               <input asp-for="Nacionalidad" placeholder="Nacionalidad" id="nacionalidad" name="nacionalidad" class="input" title="Nacionalidad"/>
                 <span asp-validation-for="Nacionalidad" class="text-danger"></span>
-
-                <label asp-for="Ciudad" class="form-label">Ciudad</label>
-                <input asp-for="Ciudad" class="form-control" />
+          
+                <input asp-for="Ciudad" placeholder="Ciudad" id="ciudad" name="ciudad" class="input" title="Ciudad"/>
                 <span asp-validation-for="Ciudad" class="text-danger"></span>
             </div>
 
-            <div class="form-group mb-3">
+            <div id="div_btn">
                 <input value="Guardar" type="submit" class="login-button" />
-                <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Home")'" />
+                <input value="Cancelar" type="button" class="login-button"
+                    onclick="location.href='@Url.Action("Index", "Home")'" />
             </div>
         </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script>
+        // Calcular la fecha de hace 18 años desde hoy
+        const fechaNacimientoInput = document.getElementById('FechaNaci');
+        const hoy = new Date();
+        const fechaMinima = new Date(hoy.getFullYear() - 18, hoy.getMonth(), hoy.getDate());
+
+        // Convertir la fecha a formato YYYY-MM-DD para establecer como valor máximo
+        const anio = fechaMinima.getFullYear();
+        const mes = ('0' + (fechaMinima.getMonth() + 1)).slice(-2); // Añadir cero si es necesario
+        const dia = ('0' + fechaMinima.getDate()).slice(-2);
+
+        const fechaMaximaPermitida = `${anio}-${mes}-${dia}`;
+        fechaNacimientoInput.setAttribute('max', fechaMaximaPermitida);
+    </script>
 </body>
 
 @section Scripts {
@@ -93,4 +97,3 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
-

@@ -24,19 +24,20 @@
 <body>
     <div id="menusection">
         <section id="crearHabitacion_fotos">
+            <div class="sec">
             <form asp-action="Edit" method="post">
                 @Html.AntiForgeryToken()
                 <input type="hidden" asp-for="IdHabitacion" />
 
                 <div class="form-group">
                     <label asp-for="NroHabitacion" class="control-label"></label>
-                    <input asp-for="NroHabitacion" class="form-control" />
+                    <input asp-for="NroHabitacion" maxlength="50" class="form-control" />
                     <span asp-validation-for="NroHabitacion" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="Descripcion" class="control-label"></label>
-                    <input asp-for="Descripcion" class="form-control" />
+                    <input asp-for="Descripcion" maxlength="50" class="form-control" />
                     <span asp-validation-for="Descripcion" class="text-danger"></span>
                 </div>
 
@@ -54,7 +55,7 @@
 
                 <div class="form-group">
                     <label asp-for="Comodidades" class="form-label"></label>
-                    <textarea asp-for="Comodidades" class="form-control"></textarea>
+                    <textarea asp-for="Comodidades" maxlength="50" class="form-control"></textarea>
                     <span asp-validation-for="Comodidades" class="text-danger"></span>
                 </div>
 
@@ -63,6 +64,7 @@
                     <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Habitaciones")'" />
                 </nav>
             </form>
+            </div>
             <div id="registrarHabitacion">
                 <h1>Registrar habitación</h1>
                 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">

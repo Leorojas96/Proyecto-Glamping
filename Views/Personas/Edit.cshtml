@@ -39,11 +39,11 @@
                 <span asp-validation-for="DocPersona" class="text-danger"></span>
 
                 <label asp-for="NomPersona" class="control-label">Nombres</label>
-                <input asp-for="NomPersona" class="form-control" />
+                <input asp-for="NomPersona" maxlength="50" class="form-control" />
                 <span asp-validation-for="NomPersona" class="text-danger"></span>
 
                 <label asp-for="ApePersona" class="control-label">Apellidos</label>
-                <input asp-for="ApePersona" class="form-control" />
+                <input asp-for="ApePersona" maxlength="50" class="form-control" />
                 <span asp-validation-for="ApePersona" class="text-danger"></span>
             </div>
 
@@ -53,7 +53,7 @@
                 <span asp-validation-for="Edad" class="text-danger"></span>
 
                 <label asp-for="Tel" class="control-label">Telefono/Celular</label>
-                <input asp-for="Tel" class="form-control" />
+                <input asp-for="Tel" maxlength="50" class="form-control" />
                 <span asp-validation-for="Tel" class="text-danger"></span>
             </div>
 
@@ -63,17 +63,17 @@
                 <span asp-validation-for="FechaNaci" class="text-danger"></span>
 
                 <label asp-for="Direcion" class="control-label">Dirección</label>
-                <input asp-for="Direcion" class="form-control" />
+                <input asp-for="Direcion" maxlength="50" class="form-control" />
                 <span asp-validation-for="Direcion" class="text-danger"></span>
             </div>
 
             <div class="nav1">
                 <label asp-for="Nacionalidad" class="control-label">Nacionalidad</label>
-                <input asp-for="Nacionalidad" class="form-control" readonly />
+                <input asp-for="Nacionalidad" maxlength="50" class="form-control" readonly />
                 <span asp-validation-for="Nacionalidad" class="text-danger"></span>
 
                 <label asp-for="Ciudad" class="control-label">Ciudad</label>
-                <input asp-for="Ciudad" class="form-control" />
+                <input asp-for="Ciudad" maxlength="50" class="form-control" />
                 <span asp-validation-for="Ciudad" class="text-danger"></span>
             </div>
 

@@ -31,9 +31,13 @@
   align-items: center;
 }
 
-.input {
+.input, .select {
   min-width: 90% !important;
 }
+
+/* .input {
+  min-width: 90% !important;
+} */
 
 @media screen and (max-width:556px) {
   .form {

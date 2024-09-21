@@ -34,33 +34,33 @@ namespace Glamping2.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Busca el usuario en la base de datos
                 var user = await _context.Usuarios
                     .Where(u => u.Correo == model.Correo && u.Contraseña == model.Contraseña)
                     .FirstOrDefaultAsync();
 
                 if (user != null)
                 {
-                    // Crea las claims para el usuario autenticado
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, user.Correo)
-                        // Agrega más claims si es necesario
                     };
 
-                    // Crea la identidad con las claims y especifica el esquema de autenticación
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var authProperties = new AuthenticationProperties
                     {
-                        // Puedes agregar propiedades de autenticación si es necesario
+                        
                     };
 
-                    // Inicia la sesión del usuario
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity), authProperties);
-
-                    // Redirige a la página principal después de iniciar sesión
-                    return RedirectToAction("Index", "Home");
+                    if (user.IdRol == 1)
+                    {
+                        return RedirectToAction("Index", "Habitaciones");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 else
                 {

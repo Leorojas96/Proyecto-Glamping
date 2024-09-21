@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Glamping2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+776b9069d9d2e3df6439ec8fb84bf3521726c6ed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5220f49f636c71a22a4f50abace745b33f1c84aa")]
 [assembly: System.Reflection.AssemblyProductAttribute("Glamping2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Glamping2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

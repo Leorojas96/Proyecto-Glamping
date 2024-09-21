@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Glamping2.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Glamping2.Controllers
 {
@@ -20,157 +21,218 @@ namespace Glamping2.Controllers
         }
 
         public async Task<IActionResult> Index()
-{
-    try
-    {
-        var userEmail = User.Identity.Name;
-
-        if (userEmail == null)
         {
-            return RedirectToAction("Login", "Account");
-        }
-
-        var userRole = await _context.Usuarios
-            .Where(u => u.Correo == userEmail)
-            .Select(u => u.IdRol)
-            .FirstOrDefaultAsync();
-
-        if (userRole == 0)
-        {
-            return RedirectToAction("AccessDenied", "Account");
-        }
-
-        var role = await _context.Roles
-            .Where(r => r.IdRol == userRole)
-            .Select(r => r.NomRol)
-            .FirstOrDefaultAsync();
-
-        ViewBag.IsAdmin = role == "Administrador";
-
-        // Obtener todas las reservas sin filtrar por EstadoReserva
-        var reservas = await _context.Reservas
-            .Include(r => r.IdPaquetesNavigation)
-            .Include(r => r.IdUsuarioNavigation)
-                .ThenInclude(u => u.IdPersonaNavigation) // Asegúrate de incluir Persona
-            .ToListAsync();
-
-        return View(reservas);
-    }
-    catch (Exception ex)
-    {
-        return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
-    }
-}
-
-        [HttpGet]
-        public async Task<IActionResult> Create()
-        {
-            var paquetesActivos = await _context.Paquetes
-        .Where(p => p.Estado == "Activo")
-        .ToListAsync();
-            ViewBag.Paquetes = paquetesActivos;
-
-            var usuarioCorreo = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
-            if (usuarioCorreo != null)
+            try
             {
-                var usuarioLogueado = await _context.Usuarios
-                    .Include(u => u.IdPersonaNavigation)
-                    .FirstOrDefaultAsync(u => u.Correo == usuarioCorreo);
+                var userEmail = User.Identity.Name;
 
-                if (usuarioLogueado != null)
+                if (userEmail == null)
                 {
-                    ViewBag.UsuarioNombre = usuarioLogueado.IdPersonaNavigation?.NomPersona;
-                    ViewBag.IdUsuario = usuarioLogueado.IdUsuario;
+                    return RedirectToAction("Login", "Account");
+                }
 
+                var userRole = await _context.Usuarios
+                    .Where(u => u.Correo == userEmail)
+                    .Select(u => u.IdRol)
+                    .FirstOrDefaultAsync();
+
+                if (userRole == 0)
+                {
+                    return RedirectToAction("AccessDenied", "Account");
+                }
+
+                var role = await _context.Roles
+                    .Where(r => r.IdRol == userRole)
+                    .Select(r => r.NomRol)
+                    .FirstOrDefaultAsync();
+
+                ViewBag.IsAdmin = role == "Administrador";
+
+                // Obtener todas las reservas sin filtrar por EstadoReserva
+                var reservas = await _context.Reservas
+                    .Include(r => r.IdPaquetesNavigation)
+                    .Include(r => r.IdUsuarioNavigation)
+                        .ThenInclude(u => u.IdPersonaNavigation) // Asegúrate de incluir Persona
+                    .ToListAsync();
+
+                return View(reservas);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
+            }
+        }
+
+        // GET: Reservas/Create
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Create(int paqueteId)
+        {
+            try
+            {
+                if (!User.Identity.IsAuthenticated)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+
+                // Configura ViewBag.IsAdmin para la acción Create
+                var userEmail = User.Identity.Name;
+                if (userEmail != null)
+                {
+                    var userRole = await _context.Usuarios
+                        .Where(u => u.Correo == userEmail)
+                        .Select(u => u.IdRol)
+                        .FirstOrDefaultAsync();
+
+                    var role = await _context.Roles
+                        .Where(r => r.IdRol == userRole)
+                        .Select(r => r.NomRol)
+                        .FirstOrDefaultAsync();
+
+                    ViewBag.IsAdmin = role == "Administrador";
+                }
+                else
+                {
+                    ViewBag.IsAdmin = false;
+                }
+
+                var paquetesActivos = await _context.Paquetes
+                    .Where(p => p.Estado == "Activo")
+                    .ToListAsync();
+                ViewBag.Paquetes = paquetesActivos;
+
+                var usuarioCorreo = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+                if (usuarioCorreo != null)
+                {
+                    var usuarioLogueado = await _context.Usuarios
+                        .Include(u => u.IdPersonaNavigation)
+                        .FirstOrDefaultAsync(u => u.Correo == usuarioCorreo);
+
+                    if (usuarioLogueado != null)
+                    {
+                        ViewBag.UsuarioNombre = usuarioLogueado.IdPersonaNavigation?.NomPersona;
+                        ViewBag.IdUsuario = usuarioLogueado.IdUsuario;
+                    }
+                }
+
+                var reserva = new Reserva
+                {
+                    FechaReserva = DateTime.Now.Date,
+                    FechaInicio = DateTime.Now.Date.AddDays(1),
+                    FechaFin = DateTime.Now.Date.AddDays(2),
+                    EstadoReserva = "Pendiente",
+                    IdPaquetes = paqueteId
+                };
+
+                return View(reserva);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
+            }
+        }
+
+        // Método para buscar usuario por documento
+        [HttpGet]
+        public async Task<JsonResult> BuscarUsuarioPorDocumento(int docPersona)
+        {
+            var usuario = await _context.Personas
+                .Include(p => p.Usuarios)
+                .FirstOrDefaultAsync(p => p.DocPersona == docPersona);
+
+            if (usuario != null)
+            {
+                var usuarioInfo = usuario.Usuarios.FirstOrDefault();
+                if (usuarioInfo != null)
+                {
+                    return Json(new
+                    {
+                        idUsuario = usuarioInfo.IdUsuario,
+                        nombreCompleto = $"{usuario.NomPersona} {usuario.ApePersona}",
+                        correo = usuarioInfo.Correo
+                    });
                 }
             }
-
-            // Crear una nueva instancia de Reserva con fechas predeterminadas
-            var reserva = new Reserva
-            {
-                FechaReserva = DateTime.Now.Date,
-                FechaInicio = DateTime.Now.Date.AddDays(1),
-                FechaFin = DateTime.Now.Date.AddDays(2),
-                EstadoReserva = "Pendiente"
-            };
-
-            return View(reserva);
+            return Json(null);
         }
 
+        // GET: Reservas/CheckPaqueteAvailability
+        [HttpGet]
+        public async Task<IActionResult> CheckPaqueteAvailability(int idPaquete, DateTime fechaInicio, DateTime fechaFin)
+        {
+            var paquete = await _context.Paquetes.FindAsync(idPaquete);
+
+            if (paquete == null)
+            {
+                return Json(new { disponible = false, mensaje = "Paquete no encontrado." });
+            }
+
+            // Verificar si el paquete está reservado para las fechas seleccionadas
+            bool paqueteReservado = await _context.Reservas
+                .AnyAsync(r => r.IdPaquetes == idPaquete &&
+                               ((fechaInicio >= r.FechaInicio && fechaInicio <= r.FechaFin) ||
+                                (fechaFin >= r.FechaInicio && fechaFin <= r.FechaFin)) &&
+                               (r.EstadoReserva != "Finalizada" && r.EstadoReserva != "Cancelada"));
+
+            // Retorna true si el paquete está disponible, false si está reservado
+            return Json(new { disponible = !paqueteReservado });
+        }
+
+
+        // POST: Reservas/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdReservas,FechaReserva,FechaInicio,FechaFin,NroPersonas,Abono,EstadoReserva,IdUsuario,IdPaquetes")] Reserva reserva)
         {
             if (ModelState.IsValid)
             {
-                if (reserva.FechaReserva == default(DateTime))
-                {
-                    reserva.FechaReserva = DateTime.Now;
-                }
-
-                // Verifica si las fechas son válidas
-                if (reserva.FechaInicio > reserva.FechaFin)
-                {
-                    ModelState.AddModelError("", "La fecha de inicio debe ser anterior a la fecha de fin.");
-                    return View(reserva);
-                }
-
-                // Obtén el paquete seleccionado para calcular el total
-                var paqueteSeleccionado = await _context.Paquetes
+                var paquete = await _context.Paquetes
                     .FirstOrDefaultAsync(p => p.IdPaquetes == reserva.IdPaquetes);
 
-                if (paqueteSeleccionado != null)
+                if (paquete == null)
                 {
-                    // Calcula la diferencia de días entre FechaInicio y FechaFin
-                    var diferenciaDias = (reserva.FechaFin - reserva.FechaInicio).Days;
-
-                    // Calcula el total basado en la duración de la reserva
-                    decimal total = Convert.ToDecimal(paqueteSeleccionado.Precio);
-
-                    if (diferenciaDias > 2)
-                    {
-                        // Si la diferencia de días es superior a 2, suma los días extras multiplicados por 30,000 al total
-                        int diasExtras = diferenciaDias - 2;
-                        total += diasExtras * 30000;
-                    }
-
-                    // Establece el total en la reserva
-                    reserva.Total = total;
+                    ModelState.AddModelError("", "El paquete seleccionado no es válido.");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "El paquete seleccionado no es válido.");
-                    return View(reserva);
+                    // Verificar si el paquete está reservado para las fechas seleccionadas
+                    bool paqueteReservado = await _context.Reservas
+                        .AnyAsync(r => r.IdPaquetes == reserva.IdPaquetes &&
+                                       ((reserva.FechaInicio >= r.FechaInicio && reserva.FechaInicio <= r.FechaFin) ||
+                                        (reserva.FechaFin >= r.FechaInicio && reserva.FechaFin <= r.FechaFin)) &&
+                                       (r.EstadoReserva != "Finalizada" && r.EstadoReserva != "Cancelada"));
+
+                    if (paqueteReservado)
+                    {
+                        ModelState.AddModelError("IdPaquetes", "El paquete ya está reservado para las fechas seleccionadas.");
+                    }
+                    else if (reserva.FechaInicio > reserva.FechaFin)
+                    {
+                        ModelState.AddModelError("", "La fecha de inicio debe ser anterior a la fecha de fin.");
+                    }
+                    else
+                    {
+                        var diferenciaDias = (reserva.FechaFin - reserva.FechaInicio).Days;
+                        decimal total = Convert.ToDecimal(paquete.Precio);
+
+                        if (diferenciaDias > 2)
+                        {
+                            total += (diferenciaDias - 2) * 30000;
+                        }
+
+                        reserva.Total = total;
+                        _context.Add(reserva);
+                        await _context.SaveChangesAsync();
+
+                        return RedirectToAction("Details", new { id = reserva.IdReservas });
+                    }
                 }
-
-                _context.Add(reserva);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction("Details", new { id = reserva.IdReservas });
             }
 
-            
-
-        // Si el modelo no es válido, vuelve a cargar los datos necesarios para la vista
-        var paquetes = await _context.Paquetes.ToListAsync();
-            ViewBag.Paquetes = paquetes;
-
-            var usuarioCorreo = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
-            if (usuarioCorreo != null)
-            {
-                var usuarioLogueado = await _context.Usuarios
-                    .Include(u => u.IdPersonaNavigation)
-                    .FirstOrDefaultAsync(u => u.Correo == usuarioCorreo);
-
-                if (usuarioLogueado != null)
-                {
-                    ViewBag.UsuarioNombre = usuarioLogueado.IdPersonaNavigation?.NomPersona;
-                    ViewBag.IdUsuario = usuarioLogueado.IdUsuario;
-                }
-            }
-
-            return View(reserva); // Devuelve la vista con el modelo actual si hay errores
+            ViewBag.Paquetes = await _context.Paquetes.Where(p => p.Estado == "Activo").ToListAsync();
+            return View(reserva);
         }
+
 
         public async Task<IActionResult> Edit(int? id)
         {

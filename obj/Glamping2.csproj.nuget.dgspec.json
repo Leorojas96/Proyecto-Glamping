@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\leoro\\source\\repos\\Glamping2\\Glamping2.csproj": {}
+    "C:\\final\\Glamping2\\Glamping2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\leoro\\source\\repos\\Glamping2\\Glamping2.csproj": {
+    "C:\\final\\Glamping2\\Glamping2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\leoro\\source\\repos\\Glamping2\\Glamping2.csproj",
+        "projectUniqueName": "C:\\final\\Glamping2\\Glamping2.csproj",
         "projectName": "Glamping2",
-        "projectPath": "C:\\Users\\leoro\\source\\repos\\Glamping2\\Glamping2.csproj",
-        "packagesPath": "C:\\Users\\leoro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\leoro\\source\\repos\\Glamping2\\obj\\",
+        "projectPath": "C:\\final\\Glamping2\\Glamping2.csproj",
+        "packagesPath": "C:\\Users\\Sebastian Marin\\.nuget\\packages\\",
+        "outputPath": "C:\\final\\Glamping2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\leoro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sebastian Marin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -46,6 +46,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.Cookies": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.33, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[6.0.33, )"
@@ -79,19 +87,19 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.32, 6.0.32]"
+              "version": "[6.0.30, 6.0.30]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.32, 6.0.32]"
+              "version": "[6.0.30, 6.0.30]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.32, 6.0.32]"
+              "version": "[6.0.30, 6.0.30]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.32, 6.0.32]"
+              "version": "[6.0.30, 6.0.30]"
             }
           ],
           "frameworkReferences": {
@@ -102,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

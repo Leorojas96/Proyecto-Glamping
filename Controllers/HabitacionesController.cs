@@ -116,15 +116,36 @@ namespace Glamping2.Controllers
 
 
         // GET: Habitaciones/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             try
             {
-                // Determina si el usuario es administrador
-                bool isAdmin = User.Identity.IsAuthenticated && User.IsInRole("Administrador");
+                var userEmail = User.Identity.Name;
 
-                // Pasa la información del rol a la vista
-                ViewBag.IsAdmin = isAdmin;
+                if (userEmail == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+
+                // Obtener el rol del usuario actual
+                var userRole = await _context.Usuarios
+                    .Where(u => u.Correo == userEmail)
+                    .Select(u => u.IdRol)
+                    .FirstOrDefaultAsync();
+
+                if (userRole == 0)
+                {
+                    return RedirectToAction("AccessDenied", "Account");
+                }
+
+                // Obtener el nombre del rol
+                var role = await _context.Roles
+                    .Where(r => r.IdRol == userRole)
+                    .Select(r => r.NomRol)
+                    .FirstOrDefaultAsync();
+
+                // Determina si el usuario es administrador
+                ViewBag.IsAdmin = role == "Administrador";
 
                 // Obtener lista de tipos de habitación activos (estado = "Activo")
                 var tipoHabitacions = _context.TipoHabitacions
@@ -151,6 +172,7 @@ namespace Glamping2.Controllers
                 return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
             }
         }
+
 
 
         // POST: Habitaciones/Create

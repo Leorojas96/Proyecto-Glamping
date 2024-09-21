@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Create";
-    var esAdministrador = ViewBag.EsAdministrador as bool? ?? false;
+    
 }
 
 <head>
@@ -19,7 +19,7 @@
     <div>
         <h1>Reserva</h1>
 
-        <form asp-action="Create">
+        <form asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="row">
@@ -32,17 +32,15 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-
                         <label asp-for="FechaInicio" class="control-label">Fecha Inicio</label>
-                        <input asp-for="FechaInicio" class="form-control" type="date" />
+                        <input asp-for="FechaInicio" class="form-control" type="date" id="FechaInicio" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
                         <span asp-validation-for="FechaInicio" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-
                         <label asp-for="FechaFin" class="control-label">Fecha Fin</label>
-                        <input asp-for="FechaFin" class="form-control" type="date"/>
+                        <input asp-for="FechaFin" class="form-control" type="date" id="FechaFin" />
                         <span asp-validation-for="FechaFin" class="text-danger"></span>
                     </div>
                 </div>
@@ -61,32 +59,57 @@
                     </div>
                 </div>
                
-                    
+                   
                 
                 <input asp-for="Total" type="hidden"/>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="control-label">Usuario</label>
-                        <input type="text" class="form-control" value="@ViewData["UsuarioNombre"]" readonly />
-                        <input asp-for="IdUsuario" type="hidden" value="@ViewData["IdUsuario"]" />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
                         <label asp-for="IdPaquetes" class="control-label">Paquete</label>
-                        <select asp-for="IdPaquetes" class="form-control" id="IdPaquetes">
-                            <option value="">Seleccionar Paquete</option>
-                            @if (ViewBag.Paquetes != null)
+                        <select asp-for="IdPaquetes" class="form-control" id="paqueteSelect">
+                            <option value="">Seleccione un paquete</option>
+                            @foreach (var paquete in ViewBag.Paquetes)
                             {
-                                foreach (var paquete in (List<Glamping2.Models.Paquete>)ViewBag.Paquetes)
-                                {
-                                    <option value="@paquete.IdPaquetes" data-precio="@paquete.Precio">@paquete.NomPaquete</option>
-                                }
+                                <option value="@paquete.IdPaquetes" data-precio="@paquete.Precio" data-descripcion="@paquete.Descripcion">
+                                    @paquete.NomPaquete
+                                </option>
                             }
                         </select>
-                        <span asp-validation-for="IdPaquetes" class="text-danger"></span>
+                        <div id="mensajeError" class="text-danger"></div>
                     </div>
                 </div>
+                
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="IdUsuario" class="control-label">Usuario</label>
+
+                        @if (ViewBag.IsAdmin != null && (bool)ViewBag.IsAdmin)
+                    {
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <input type="text" id="docPersonaInput" class="form-control" placeholder="Buscar por DocPersona" />
+                                
+                                    <select asp-for="IdUsuario" class="form-control"></select>
+                            </div>
+
+                            <br />
+                            <button type="button" id="buscarUsuarioBtn" class="btn btn-primary">Buscar Usuario</button>
+                       
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control" value="@ViewData["UsuarioNombre"]" readonly />
+                        <input asp-for="IdUsuario" type="hidden" value="@ViewData["IdUsuario"]" />
+                    }
+                </div>
+                </div>
+                <div class="col-md-6">
+                    <div id="infoPaquete" style="display: none;">
+                        <h4>Información del Paquete</h4>
+                        <p><strong>Descripción:</strong> <span id="paqueteDescripcion"></span></p>
+                        <p><strong>Precio:</strong> <span id="paquetePrecio"></span></p>
+           
+                    </div>
+                </div>
+                
                 <div class="col-md-6">
                     <div class="form-group">
 
@@ -97,13 +120,154 @@
             </div>
 
             <nav id="div_btn">
-                <input value="Guardar" type="submit" class="login-button" />
-                <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Reservas")'" />
+                <input value="Guardar" type="submit" class="login-button" onclick="return confirmarEnvio();" />
+                <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Home")'" />
             </nav>
         </form>
     </div>
 
-    
+    <script>
+        function confirmarEnvio() {
+            const mensaje = "El precio del paquete cubre 2 días. Los días adicionales tienen un valor de $30,000 c/u. ¿Desea continuar?";
+            return confirm(mensaje);
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var fechaInicioInput = document.getElementById("FechaInicio");
+            var fechaFinInput = document.getElementById("FechaFin");
+            var paqueteSelect = document.getElementById("paqueteSelect");
+            var mensajeError = document.getElementById("mensajeError");
+
+            function verificarDisponibilidad() {
+                var idPaquete = paqueteSelect.value;
+                var fechaInicio = encodeURIComponent(fechaInicioInput.value);
+                var fechaFin = encodeURIComponent(fechaFinInput.value);
+
+                if (idPaquete && fechaInicio && fechaFin) {
+                    fetch(`/Reservas/CheckPaqueteAvailability?idPaquete=${idPaquete}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (!data.disponible) {
+                                mensajeError.textContent = "El paquete ya está reservado para las fechas seleccionadas.";
+                            } else {
+                                mensajeError.textContent = "";
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            mensajeError.textContent = "Hubo un error al verificar la disponibilidad.";
+                        });
+                }
+            }
+
+            // Escuchar cambios en la fecha de inicio, fecha de fin o paquete seleccionado
+            fechaInicioInput.addEventListener('change', verificarDisponibilidad);
+            fechaFinInput.addEventListener('change', verificarDisponibilidad);
+            paqueteSelect.addEventListener('change', verificarDisponibilidad);
+        });
+    </script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var fechaInicioInput = document.getElementById("FechaInicio");
+            var fechaFinInput = document.getElementById("FechaFin");
+
+            // Función para sumar un día a una fecha dada
+            function addOneDay(date) {
+                var newDate = new Date(date);
+                newDate.setDate(newDate.getDate() + 1);
+                return newDate;
+            }
+
+            // Bloquear la selección de fechas anteriores al día siguiente de la fecha actual
+            function bloquearFechaInicio() {
+                var hoy = new Date();
+                var minFechaInicio = addOneDay(hoy); // Suma un día a la fecha actual
+                fechaInicioInput.setAttribute("min", minFechaInicio.toISOString().split('T')[0]);
+            }
+
+            // Validar la Fecha Fin
+            function validateDates() {
+                var fechaInicio = new Date(fechaInicioInput.value);
+                var fechaFin = new Date(fechaFinInput.value);
+
+                var minFechaFin = addOneDay(fechaInicio); // Suma un día a la fecha de inicio para la validación
+
+                if (fechaFin < minFechaFin && fechaFinInput.value) {
+                    alert("La fecha de fin no puede ser anterior a un día después de la fecha de inicio.");
+                    fechaFinInput.value = ""; // Limpiar el campo si es inválido
+                }
+            }
+
+            // Actualizar la fecha mínima de la Fecha Fin cuando cambia la Fecha Inicio
+            function updateMinFechaFin() {
+                var fechaInicio = new Date(fechaInicioInput.value);
+
+                if (!isNaN(fechaInicio.getTime())) {
+                    var minFechaFin = addOneDay(fechaInicio);
+                    fechaFinInput.setAttribute("min", minFechaFin.toISOString().split('T')[0]);
+                } else {
+                    fechaFinInput.removeAttribute("min"); // Si no hay fecha de inicio, permite cualquier fecha
+                }
+            }
+
+            // Establecer la restricción de la fecha mínima en Fecha Inicio al cargar la página
+            bloquearFechaInicio();
+
+            // Escuchar cambios en la Fecha Inicio y actualizar la Fecha Fin
+            fechaInicioInput.addEventListener('change', updateMinFechaFin);
+
+            // Validar fechas cuando la Fecha Fin cambia
+            fechaFinInput.addEventListener('change', validateDates);
+        });
+    </script>
+
+    <script>
+        document.getElementById('buscarUsuarioBtn').addEventListener('click', function () {
+            var docPersona = document.getElementById('docPersonaInput').value;
+
+            if (docPersona) {
+                fetch('/Reservas/BuscarUsuarioPorDocumento?docPersona=' + docPersona)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data) {
+                            var select = document.getElementById('IdUsuario');
+                            select.innerHTML = `<option value="${data.idUsuario}" selected>${data.nombreCompleto} (${data.correo})</option>`;
+                        } else {
+                            alert('Usuario no encontrado');
+                        }
+                    });
+            } else {
+                alert('Ingrese un número de documento válido.');
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var paqueteSelect = document.getElementById("paqueteSelect");
+            var infoPaquete = document.getElementById("infoPaquete");
+            var paqueteDescripcion = document.getElementById("paqueteDescripcion");
+            var paquetePrecio = document.getElementById("paquetePrecio");
+
+            paqueteSelect.addEventListener("change", function () {
+                var selectedOption = paqueteSelect.options[paqueteSelect.selectedIndex];
+                var descripcion = selectedOption.getAttribute("data-descripcion");
+                var precio = selectedOption.getAttribute("data-precio");
+
+                if (descripcion && precio) {
+                    paqueteDescripcion.textContent = descripcion;
+                    paquetePrecio.textContent = precio;
+                    infoPaquete.style.display = "block"; // Muestra la información del paquete
+                } else {
+                    infoPaquete.style.display = "none"; // Oculta la información si no hay paquete seleccionado
+                }
+            });
+        });
+    </script>
+
 
     @section Scripts {
         @{

@@ -6,72 +6,48 @@
     <title>@ViewData["Title"] - Glamping2</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/recuperar.css" asp-append-version="true" />
-    
     <link rel="icon" href="~/imagenes/icono.jpg" />
-    
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Burj Al Arab</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <a class="nav-link" asp-area="" asp-controller="Habitaciones" asp-action="Index">Habitaciones</a>
-                            }
-                            else
-                            {
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Habitaciones</a>
-                            }
-                        </li>
-                        <li class="nav-item">
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <a class="nav-link" asp-area="" asp-controller="Servicios" asp-action="Index">Servicios</a>
-                            }
-                            else
-                            {
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Servicios</a>
-                            }
-                        </li>
-
-                        <li class="nav-item">
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <a class="nav-link" asp-area="" asp-controller="Reservas" asp-action="Create">Reservar</a>
-                            }
-                            else
-                            {
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Reservar</a>
-                            }
-                        </li>
-                        <li class="nav-item">
-                            @if (User.Identity.IsAuthenticated)
-                        {
-                            
-                                <a class="nav-link" asp-area="" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
-
-                            }
-                            else
-                            {
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Dashboard</a>
-                            }
-                        </li>
-                        
-                    </ul>
-                </div>
+                @if (ViewBag.IsAdmin == null || ViewBag.IsAdmin == false)
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Burj Al Arab</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Paquetes" asp-action="PaquetesDisponibles">Paquetes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Servicios" asp-action="ServiciosDisponibles">Servicios</a>
+                            </li>
+                            <li class="nav-item">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a class="nav-link" asp-area="" asp-controller="Reservas" asp-action="Create">Reservar</a>
+                                }
+                                else
+                                {
+                                    <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Reservar</a>
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                }
                 <div class="auth-buttons">
                     @if (User.Identity.IsAuthenticated)
                     {
                         <form action="@Url.Action("Logout", "Account")" method="post" class="d-inline">
-                            @Html.AntiForgeryToken() <!-- Añadir esta línea para el token de seguridad -->
+                            @Html.AntiForgeryToken()
                             <button type="submit" class="btn btn-outline-success">Cerrar Sesión</button>
                         </form>
                     }
@@ -88,19 +64,21 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div id="footer">
             &copy; 2024 - Glamping2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

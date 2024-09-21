@@ -20,56 +20,55 @@
 </head>
 
 <body>
-    <div>
-        <div class="row justify-content-center">
-        <h1>Crear Usuario</h1>
-
-        <form asp-action="Create">
-            <div class="col-md-6">
-                <label asp-for="Correo" class="form-label"></label>
-                <input asp-for="Correo" class="form-control" placeholder="Correo" />
-                <span asp-validation-for="Correo" class="text-danger"></span>
-            </div>
-            <div class="col-md-6">
-                <label asp-for="Contraseña" class="form-label"></label>
-                <input asp-for="Contraseña" type="password" class="form-control" placeholder="Contraseña" />
-                <span asp-validation-for="Contraseña" class="text-danger"></span>
-            </div>
-
-            @if (ViewBag.IsAdmin)
-            {
-                <div class="col-md-6">
-                    <label asp-for="IdPersona" class="form-label"></label>
-                    <select asp-for="IdPersona" class="form-select" asp-items="ViewBag.IdPersona">
-                        <option value="">Selecciona una persona</option>
-                    </select>
-                    <span asp-validation-for="IdPersona" class="text-danger"></span>
-                </div>
-                <div class="col-md-6">
-                    <label asp-for="IdRol" class="form-label"></label>
-                    <select asp-for="IdRol" class="form-select" asp-items="ViewBag.IdRol">
-                        <option value="">Selecciona un rol</option>
-                    </select>
-                    <span asp-validation-for="IdRol" class="text-danger"></span>
-                </div>
-            }
-            else
-            {
-                <input type="hidden" asp-for="IdPersona" value="@ViewBag.LastPersonaId" />
-                <input type="hidden" asp-for="IdRol" value="2" />
-            }
-
-       
-            
-        </form>
-
-        
+    <div class="d-flex justify-content-center align-items-center">
         <div class="col-md-6">
-            <input value="Guardar" type="submit" class="login-button" />
-            <form asp-controller="Personas" asp-action="DeleteLast" method="post" style="display:inline;">
-                <button type="submit" class="login-button">Cancelar</button>
+            <h1 class="text-center">Crear Usuario</h1>
+
+            <form asp-action="Create">
+                <div class="mb-3">
+                    <label asp-for="Correo" class="form-label"></label>
+                    <input asp-for="Correo" maxlength="50" class="form-control" placeholder="Correo" />
+                    <span asp-validation-for="Correo" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Contraseña" class="form-label"></label>
+                    <input asp-for="Contraseña" type="password" maxlength="50" class="form-control" placeholder="Contraseña" />
+                    <span asp-validation-for="Contraseña" class="text-danger"></span>
+                </div>
+
+                @if (ViewBag.IsAdmin)
+                {
+                    <div class="mb-3">
+                        <label asp-for="IdPersona" class="form-label"></label>
+                        <select asp-for="IdPersona" class="form-select" asp-items="ViewBag.IdPersona">
+                            <option value="">Selecciona una persona</option>
+                        </select>
+                        <span asp-validation-for="IdPersona" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="IdRol" class="form-label"></label>
+                        <select asp-for="IdRol" class="form-select" asp-items="ViewBag.IdRol">
+                            <option value="">Selecciona un rol</option>
+                        </select>
+                        <span asp-validation-for="IdRol" class="text-danger"></span>
+                    </div>
+                }
+                else
+                {
+                    <input type="hidden" asp-for="IdPersona" value="@ViewBag.LastPersonaId" />
+                    <input type="hidden" asp-for="IdRol" value="2" />
+                }
+                <div id="div_btn">
+                <input value="Guardar" type="submit" class="login-button" />
+
+                </div>
             </form>
-        </div>
+            <div id="div_btn">
+                
+                <form asp-controller="Personas" asp-action="DeleteLast" method="post" style="display:inline;" id="cancelForm">
+                    <button type="submit" class="login-button" onclick="return confirmCancel()">Cancelar</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -77,6 +76,12 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
     <script src="/js/funcionClick.js"></script>
+
+    <script>
+        function confirmCancel() {
+            return confirm("Se eliminarán los datos del registro. ¿Desea continuar?");
+        }
+    </script>
 
     @section Scripts {
         @{
@@ -86,3 +91,4 @@
 </body>
 
 </html>
+
