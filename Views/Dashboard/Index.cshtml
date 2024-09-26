@@ -21,17 +21,30 @@
             width: 45%; /* Ajusta el ancho de las gráficas */
         }
 
+        .back-button {
+            align-self: flex-start;
+            padding: 10px;
+            text-align: center;
+            background-color: #000;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
         h1, h2 {
             text-align: center;
         }
+
     </style>
 </head>
 <body>
     <div>
+        
         <h1>Dashboard</h1>
 
         <div class="dashboard-container">
-            <!-- Gráfica de Reservas -->
+            <a href="@Url.Action("Index", "Habitaciones")" class="back-button">Atrás</a>
             <div class="chart-container">
                 <h2>Reservas Realizadas</h2>
                 <canvas id="reservasChart"></canvas>

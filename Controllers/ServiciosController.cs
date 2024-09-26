@@ -158,12 +158,37 @@ namespace Glamping2.Controllers
 
         // POST: Servicios/Create
         [HttpPost]
-        public async Task<IActionResult> Create(Servicio servicio)
+        public async Task<IActionResult> Create(Servicio servicio, IFormFile ImagenFile)
         {
+            if (ImagenFile != null && ImagenFile.Length > 0)
+            {
+                // Ruta para guardar la imagen en wwwroot/imagenes/servicios
+                var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagenes/servicios");
+
+                // Asegurarse de que la carpeta exista, si no, crearla
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                // Crear la ruta completa del archivo
+                var filePath = Path.Combine(folderPath, ImagenFile.FileName);
+
+                // Guardar la imagen en el servidor
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await ImagenFile.CopyToAsync(stream);
+                }
+
+                // Guardar la URL relativa de la imagen en el modelo
+                servicio.ImagenUrl = "/imagenes/servicios/" + ImagenFile.FileName;
+            }
+
             _context.Add(servicio);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
 
         // GET: Servicios/Edit/5
         public async Task<IActionResult> Edit(int? id)

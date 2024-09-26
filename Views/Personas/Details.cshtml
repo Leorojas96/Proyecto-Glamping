@@ -16,52 +16,52 @@
     <link rel="icon" href="/imagenes/icono.jpg">
 </head>
 
-<div>
+<div class="container">
     <h1>Detalles</h1>
     <form>
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="nav1">
                 <label asp-for="TipoDoc" class="form-label">Tipo de Documento</label>
-                <input type="text" class="form-control" value="@Model.TipoDoc" readonly />
+                <input type="text" class="input" value="@Model.TipoDoc" readonly />
             </div>
-            <div class="col-md-6">
+            <div class="nav1">
                 <label asp-for="DocPersona" class="form-label">Número de Documento</label>
-                <input type="text" class="form-control" value="@Model.DocPersona" readonly />
+                <input type="text" class="input" value="@Model.DocPersona" readonly />
             </div>
-            <div class="col-md-6">
+            <div class="nav1">
                 <label asp-for="NomPersona" class="form-label">Nombre</label>
-                <input type="text" class="form-control" value="@Model.NomPersona" readonly />
+                <input type="text" class="input" value="@Model.NomPersona" readonly />
             </div>
-            <div class="col-md-6">
+            <div class="nav1">
                 <label asp-for="ApePersona" class="form-label">Apellido</label>
-                <input type="text" class="form-control" value="@Model.ApePersona" readonly />
+                <input type="text" class="input" value="@Model.ApePersona" readonly />
             </div>
-            <div class="col-md-6">
+            <div class="nav1">
                 <label asp-for="Edad" class="form-label">Edad</label>
-                <input type="text" class="form-control" value="@Model.Edad" readonly />
+                <input type="text" class="input" value="@Model.Edad" readonly />
             </div>
-            <div class="col-md-6">
+            <div class="nav1">
                 <label asp-for="Tel" class="form-label">Teléfono</label>
-                <input type="text" class="form-control" value="@Model.Tel" readonly />
+                <input type="text" class="input" value="@Model.Tel" readonly />
             </div>
-            <div class="col-md-6">
+            <div class="nav1">
                 <label asp-for="FechaNaci" class="form-label">Fecha de Nacimiento</label>
-                <input type="text" class="form-control" value="@Model.FechaNaci.ToShortDateString()" readonly />
+                <input type="text" class="input" value="@Model.FechaNaci.ToShortDateString()" readonly />
             </div>
-            <div class="col-md-6">
+            <div class="nav1">
                 <label asp-for="Direcion" class="form-label">Dirección</label>
-                <input type="text" class="form-control" value="@Model.Direcion" readonly />
+                <input type="text" class="input" value="@Model.Direcion" readonly />
             </div>
-            <div class="col-md-6">
+            <div class="nav1">
                 <label asp-for="Nacionalidad" class="form-label">Nacionalidad</label>
-                <input type="text" class="form-control" value="@Model.Nacionalidad" readonly />
+                <input type="text" class="input" value="@Model.Nacionalidad" readonly />
             </div>
-            <div class="col-md-6">
+            <div class="nav1">
                 <label asp-for="Ciudad" class="form-label">Ciudad</label>
-                <input type="text" class="form-control" value="@Model.Ciudad" readonly />
+                <input type="text" class="input" value="@Model.Ciudad" readonly />
             </div>
         </div>
-        <div class="mt-3">
+        <div class="div_btn">
             @if (isAdmin)
             {
                 <input type="button" value="Editar" class="login-button" onclick="location.href='@Url.Action("Edit", new { id = Model.IdPersona })'" />

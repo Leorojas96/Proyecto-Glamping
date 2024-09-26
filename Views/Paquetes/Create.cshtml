@@ -1,7 +1,7 @@
 ﻿@model Glamping2.Models.Paquete
 
 @{
-    ViewData["Title"] = "Crear";
+    ViewData["Title"] = "Crear Paquete";
 }
 
 <!DOCTYPE html>
@@ -17,50 +17,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-    <div>
+    <div class="container">
         <h1>Crear Paquete</h1>
-        <form class="form" asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div class="nav1">
-                <label asp-for="NomPaquete" class="form-label">Nombre</label>
-                <input placeholder="Nombre del Paquete" asp-for="NomPaquete" maxlength="50" class="form-control" required title="Nombre del Paquete" />
+                <input placeholder="Nombre del Paquete" asp-for="NomPaquete" maxlength="50" class="input" required title="Nombre del Paquete" />
                 <span asp-validation-for="NomPaquete" class="text-danger"></span>
             </div>
 
             <div class="nav1">
-                <label asp-for="Descripcion" class="form-label">Descripción</label>
-                <input placeholder="Descripción" asp-for="Descripcion" maxlength="50" class="form-control" required title="Descripción" />
+                <input placeholder="Descripción" asp-for="Descripcion" maxlength="50" class="input" required title="Descripción" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
 
             <div class="nav1">
                 <label asp-for="IdServicios" class="form-label">Servicios</label>
-                <select asp-for="IdServicios" class="form-select" asp-items="ViewBag.IdServicios"></select>
+                <select asp-for="IdServicios" class="select" asp-items="ViewBag.IdServicios"></select>
                 <span asp-validation-for="IdServicios" class="text-danger"></span>
             </div>
 
             <div class="nav1">
                 <label asp-for="IdHabitacion" class="form-label">Habitación</label>
-                <select asp-for="IdHabitacion" class="form-select" asp-items="ViewBag.IdHabitacion"></select>
+                <select asp-for="IdHabitacion" class="select" asp-items="ViewBag.IdHabitacion"></select>
                 <span asp-validation-for="IdHabitacion" class="text-danger"></span>
             </div>
 
             <div class="nav1">
                 <label for="Estado">Estado</label>
-                <select asp-for="Estado" class="form-select">
+                <select asp-for="Estado" class="select">
                     <option value="Activo">Activo</option>
                     <option value="Inactivo">Inactivo</option>
                 </select>
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
+
             <div class="nav1">
-                <label for="ImagenUrl">Imagen</label>
-                <input placeholder="Imagen" asp-for="ImagenUrl" maxlength="200" class="form-control" />
-                <span asp-validation-for="ImagenUrl" class="text-danger"></span>
+                <label for="ImagenUrl" class="form-label">Imagen del Paquete</label>
+                <input type="file" name="Imagen" class="input" />
             </div>
-                
-                
-            <input type="hidden" asp-for="Precio" />
-            
+
+            <input type="hidden" asp-for="Precio" class="input" />
 
             <div id="div_btn">
                 <input value="Guardar" type="submit" class="login-button" />
@@ -69,10 +65,8 @@
         </form>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
-
 
 @section Scripts {
     @{

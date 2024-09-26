@@ -228,40 +228,39 @@ namespace Glamping2.Controllers
         }
 
 
-        // GET: TipoHabitacions/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (id == null || _context.TipoHabitacions == null)
+            var tipoHabitacion = await _context.TipoHabitacions.FindAsync(id);
+            if (tipoHabitacion != null)
             {
-                return NotFound();
+                tipoHabitacion.Estado = "Inactivo"; // Cambiar el estado a Inactivo
+                _context.Update(tipoHabitacion);
             }
 
-            var tipoHabitacion = await _context.TipoHabitacions
-                .FirstOrDefaultAsync(m => m.IdTipoHabita == id);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Activate(int id)
+        {
+            var tipoHabitacion = await _context.TipoHabitacions.FindAsync(id);
+
             if (tipoHabitacion == null)
             {
                 return NotFound();
             }
 
-            return View(tipoHabitacion);
-        }
-
-        // POST: TipoHabitacions/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.TipoHabitacions == null)
-            {
-                return Problem("Entity set 'GLAMPINGContext.TipoHabitacions'  is null.");
-            }
-            var tipoHabitacion = await _context.TipoHabitacions.FindAsync(id);
-            if (tipoHabitacion != null)
-            {
-                _context.TipoHabitacions.Remove(tipoHabitacion);
-            }
-            
+            tipoHabitacion.Estado = "Activo"; // Cambiar el estado a Activo
+            _context.Update(tipoHabitacion);
             await _context.SaveChangesAsync();
+
+            TempData["Message"] = "El tipo de habitación ha sido activado.";
             return RedirectToAction(nameof(Index));
         }
 

@@ -20,30 +20,32 @@
 
 <body>
     <div>
+        <div class="container">
         <h1>Editar</h1>
-        <form asp-action="Edit">
+       <form asp-action="Edit" enctype="multipart/form-data">
+
             <div class="nav1">
                 <label for="NomPaquete">Nombre</label>
                 <input type="hidden" asp-for="IdPaquetes" />
-                <input placeholder="Nombre del Paquete" asp-for="NomPaquete" maxlength="50" class="form-control" required="" title="Nombre del Paquete" />
+                <input placeholder="Nombre del Paquete" asp-for="NomPaquete" maxlength="50" class="input" required="" title="Nombre del Paquete" />
                 <span asp-validation-for="NomPaquete" class="text-danger"></span>
             </div><br/>
 
             <div class="nav1">
                 <label for="Descripcion">Descripción</label>
-                <input placeholder="Descripción" asp-for="Descripcion" maxlength="50" class="form-control" required="" title="Descripción" />
+                <input placeholder="Descripción" asp-for="Descripcion" maxlength="50" class="input" required="" title="Descripción" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div><br />
 
             <div class="nav1">
                 <label for="Precio">Precio</label>
-                <input placeholder="Precio" asp-for="Precio" maxlength="50" class="form-control" required="" step="any" title="Precio" />
+                <input placeholder="Precio" asp-for="Precio" maxlength="50" class="input" required="" step="any" title="Precio" />
                 <span asp-validation-for="Precio" class="text-danger"></span>
             </div>
 
             <div class="nav1">
                 <label for="Estado">Estado</label>
-                <select asp-for="Estado" class="form-select">
+                <select asp-for="Estado" class="select">
                     <option value="Activo">Activo</option>
                     <option value="Inactivo">Inactivo</option>
                 </select>
@@ -52,20 +54,19 @@
 
             <div class="nav1">
                 <label asp-for="IdServicios" class="form-label">Servicios</label>
-                <select asp-for="IdServicios" class="form-select" asp-items="ViewBag.IdServicios"></select>
+                <select asp-for="IdServicios" class="select" asp-items="ViewBag.IdServicios"></select>
                 <span asp-validation-for="IdServicios" class="text-danger"></span>
             </div>
 
             <div class="nav1">
                 <label asp-for="IdHabitacion" class="form-label">Habitación</label>
-                <select asp-for="IdHabitacion" class="form-select" asp-items="ViewBag.IdHabitacion"></select>
+                <select asp-for="IdHabitacion" class="select" asp-items="ViewBag.IdHabitacion"></select>
                 <span asp-validation-for="IdHabitacion" class="text-danger"></span>
             </div>
             <div class="nav1">
-                <label for="ImagenUrl">Imagen</label>
-                <input placeholder="Imagen" asp-for="ImagenUrl" maxlength="200" class="form-control" />
+                <label for="ImagenUrl">Subir nueva imagen</label>
+                <input type="file" name="ImagenFile" class="input" />
                 <span asp-validation-for="ImagenUrl" class="text-danger"></span>
-
             </div>
 
             <div id="div_btn">
@@ -73,6 +74,7 @@
                 <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Paquetes")'" />
             </div>
         </form>
+        <div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

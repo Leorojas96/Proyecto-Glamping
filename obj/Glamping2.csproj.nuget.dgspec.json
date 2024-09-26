@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\leoro\\source\\repos\\Glamping2\\Glamping2.csproj": {}
+    "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\Glamping2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\leoro\\source\\repos\\Glamping2\\Glamping2.csproj": {
+    "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\Glamping2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\leoro\\source\\repos\\Glamping2\\Glamping2.csproj",
+        "projectUniqueName": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\Glamping2.csproj",
         "projectName": "Glamping2",
-        "projectPath": "C:\\Users\\leoro\\source\\repos\\Glamping2\\Glamping2.csproj",
+        "projectPath": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\Glamping2.csproj",
         "packagesPath": "C:\\Users\\leoro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\leoro\\source\\repos\\Glamping2\\obj\\",
+        "outputPath": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\leoro\\AppData\\Roaming\\NuGet\\NuGet.Config",

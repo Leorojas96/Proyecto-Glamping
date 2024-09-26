@@ -67,27 +67,7 @@ namespace Glamping2.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult BuscarPorDocumento(int documento)
-        {
-            if (documento <= 0)
-            {
-                return RedirectToAction("Index");
-            }
-
-            var persona = _context.Personas.FirstOrDefault(p => p.DocPersona == documento);
-
-            if (persona != null)
-            {
-                return RedirectToAction("Details", new { id = persona.IdPersona });
-            }
-            else
-            {
-                TempData["Error"] = "No se encontró ninguna persona con ese número de documento.";
-                return RedirectToAction("Index");
-            }
-        }
-
+        
 
         // GET: Personas/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -146,63 +126,40 @@ namespace Glamping2.Controllers
 
 
 
-        // GET: Personas/Creat
-        [AllowAnonymous] // Permitir el acceso sin autenticación
-        public async Task<IActionResult> Create()
-        {
-            try
-            {
-                // No verificar si el usuario está autenticado para esta vista
+        public IActionResult Create()
+ {
+     return View();
+ }
 
-                // Obtener lista de servicios
-                var servicios = _context.Servicios.ToList();
+ // POST: Persona/Create
+ [HttpPost]
+ [ValidateAntiForgeryToken]
+ public async Task<IActionResult> Create([Bind("TipoDoc,DocPersona,NomPersona,ApePersona,Edad,Tel,FechaNaci,Direcion,Nacionalidad,Ciudad")] Persona persona)
+ {
+     if (ModelState.IsValid)
+     {
+         try
+         {
+             // Calcular la edad basada en la fecha de nacimiento
+             var hoy = DateTime.Today;
+             var edad = hoy.Year - persona.FechaNaci.Year;
+             if (persona.FechaNaci > hoy.AddYears(-edad)) edad--;
+             persona.Edad = edad;
 
-                // Obtener lista de habitaciones activas (estado = "Disponible")
-                var habitacionesActivas = _context.Habitaciones
-                    .Where(h => h.EstadoHabitacion == "Disponible")
-                    .Select(h => new { h.IdHabitacion, h.NroHabitacion }) // Solo selecciona los campos necesarios
-                    .ToList();
+             _context.Add(persona);
+             await _context.SaveChangesAsync();
+             return RedirectToAction("Create", "Usuarios"); // Redirigir a la lista o a otra vista
+         }
+         catch (Exception ex)
+         {
+             // Manejo de errores, podrías también registrar el error
+             ModelState.AddModelError("", $"Error al guardar la persona: {ex.Message}");
+         }
+     }
 
-                // Asignar la lista de habitaciones activas y servicios a ViewBag
-                ViewBag.IdHabitacion = new SelectList(habitacionesActivas, "IdHabitacion", "NroHabitacion");
-                ViewBag.IdServicios = new SelectList(servicios, "IdServicios", "NomServicio");
-
-                return View();
-            }
-            catch (Exception ex)
-            {
-                // Manejar errores y pasar el mensaje de error a la vista de error
-                return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
-            }
-        }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdPersona,TipoDoc,DocPersona,NomPersona,ApePersona,FechaNaci,Tel,Direcion,Nacionalidad,Ciudad")] Persona persona)
-        {
-            if (ModelState.IsValid)
-            {
-                // Configurar la hora a medianoche si solo necesitas la fecha
-                persona.FechaNaci = persona.FechaNaci.Date;
-
-                // Calcular la edad
-                var today = DateTime.Today;
-                var age = today.Year - persona.FechaNaci.Year;
-                if (persona.FechaNaci.Date > today.AddYears(-age)) age--;
-
-                // Si deseas almacenar la edad en la base de datos
-                persona.Edad = age;
-
-                _context.Add(persona);
-                await _context.SaveChangesAsync();
-
-                // Redirigir a la acción Create del controlador Usuarios
-                return RedirectToAction("Create", "Usuarios");
-            }
-            return View(persona);
-        }
-
+     // Si el modelo no es válido, volver a mostrar el formulario con los datos ingresados
+     return View(persona);
+ }
 
 
         // GET: Personas/Edit/5
@@ -239,6 +196,21 @@ namespace Glamping2.Controllers
                 {
                     _context.Update(persona);
                     await _context.SaveChangesAsync();
+
+                    // Obtener el usuario actual logueado
+                    var correoUsuario = User.Identity.Name;
+                    var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Correo == correoUsuario);
+
+                    if (usuario != null && usuario.IdRol == 1) // Suponiendo que '1' es el rol de administrador
+                    {
+                        // Redirigir a la lista de personas si es administrador
+                        return RedirectToAction("Index", "Personas");
+                    }
+                    else
+                    {
+                        // Redirigir al perfil si no es administrador
+                        return RedirectToAction("Perfil", "Account");
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -251,10 +223,11 @@ namespace Glamping2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
+
             return View(persona);
         }
+
 
         // GET: Personas/Delete/5
         public async Task<IActionResult> Delete(int? id)

@@ -1,26 +1,31 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Glamping2</title>
+    <title>@ViewData["Title"] Glamping2</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/recuperar.css" asp-append-version="true" />
-
+    <link rel="stylesheet" href="/css/PagPrincipal.css">
     <link rel="icon" href="~/imagenes/icono.jpg" />
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    @await RenderSectionAsync("Styles", required: false)
 </head>
+
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Burj Al Arab</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+        <nav id="cabecera" class="navbar navbar-expand-sm ">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Burj Al Arab</a>
+            @if (ViewBag.IsAdmin == null || ViewBag.IsAdmin == false)
+            {
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Paquetes" asp-action="PaquetesDisponibles">Paquetes</a>
                         </li>
@@ -37,55 +42,79 @@
                                 <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Reservar</a>
                             }
                         </li>
-
-                        
-                        @if (User.Identity.IsAuthenticated && (ViewBag.IsAdmin ?? false))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Habitaciones" asp-action="Index">Admin</a>
-                            </li>
-                        }
                     </ul>
                 </div>
-                <div class="auth-buttons">
-                    @if (User.Identity.IsAuthenticated)
-                    {
+            }
+            <div class="auth-buttons">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button class="abrir-menu" id="abrir"><i class="bi bi-list"></i></button>
+                    <nav class="nav-menu" id="nav">
+                        <button class="cerrar-menu" id="cerrar"> <i class="bi bi-x"></i> </button>
+                        <ul class="nav-list">
+                            @if (ViewBag.IsAdmin != null && ViewBag.IsAdmin)
+                            {
+                                <li><a href="@Url.Action("Index", "Usuarios")">Usuarios</a></li>
+                                <li><a href="@Url.Action("Index", "Habitaciones")">Habitaciones</a></li>
+                                <li><a href="@Url.Action("Index", "TipoHabitacions")">Tipo Habitacion</a></li>
+                                <li><a href="@Url.Action("Index", "Servicios")">Servicios</a></li>
+                                <li><a href="@Url.Action("Index", "Paquetes")">Paquetes</a></li>
+                                <li><a href="@Url.Action("Index", "Personas")">Clientes</a></li>
+                                <li><a href="@Url.Action("Index", "Reservas")">Reservas</a></li>
+                                <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+                            }
+                            @if (ViewBag.IsAdmin != null && !ViewBag.IsAdmin)
+                            {
+                                <li><a href="@Url.Action("Perfil", "Account")">Mi Perfil</a></li>
+                            }
+                            <form action="@Url.Action("Logout", "Account")" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-outline-success">Cerrar Sesión</button>
+                            </form>
+                        </ul>
+                    </nav>
+
+                    <div class="botones">
+                        @if (ViewBag.IsAdmin != null && !ViewBag.IsAdmin)
+                        {
+                            <form action="@Url.Action("Perfil", "Account")" class="d-inline">
+                                <button type="submit" class="btn btn-outline-success">Perfil</button>
+                            </form>
+                        }
                         <form action="@Url.Action("Logout", "Account")" method="post" class="d-inline">
                             @Html.AntiForgeryToken()
                             <button type="submit" class="btn btn-outline-success">Cerrar Sesión</button>
                         </form>
-                    }
-                    else
-                    {
+                    </div>
+                }
+                else
+                {
+                    <div class="botones">
                         <form action="@Url.Action("Login", "Account")" method="get" class="d-inline">
                             <button type="submit" class="btn btn-outline-success">Iniciar Sesión</button>
                         </form>
                         <form action="@Url.Action("Create", "Personas")" method="get" class="d-inline">
                             <button type="submit" class="btn btn-outline-success">Registrarse</button>
                         </form>
-                    }
-                </div>
+                    </div>
+                }
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Glamping2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+    <footer>
+        &copy; 2024 - Glamping2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/JS/funcionClick.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-</html>
 
+</html>

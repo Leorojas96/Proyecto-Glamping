@@ -1,122 +1,32 @@
-/* Crear reserva */
-#crearReserva {
-  width: 100%;
-  padding: 15px;
-  flex-wrap: wrap;
-}
-
-@media screen and (max-width:1112px) {
-  #crearReserva {
-    display: flex;
-    flex-direction: column;
-    justify-content: center !important;
-    align-items: center;
-  }
-}
-
-/* INPUT BUSCAR */
-.nav1 {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.container-fluidR {
-  width: 60%;
-  display: flex;
-}
-
-@media screen and (max-width:400px) {
-  .container-fluidR{
-    width: 90%;
-  }
-}
-
-/* FORMULARIOS */
-
-/* FORMULARIO DATOS DEL CLIENTE QUE RESERVAS */
+/* FORMULARIO RESERVAS */
 .container {
-  width: 55% !important;
-  float: left;
-}
-
-.form {
-  margin-top: 5px;
+  width: 50% !important;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center !important;
 }
 
-@media screen and (max-width:400px) {
-
-  .nav1,
-  .nav2,
-  .nav3,
-  .nav4,
-  .nav5,
-  .nav6 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center !important;
-    align-items: center;
-  }
-
-  .input, .select{
-    min-width: 90%;
-  }
-}
-
-/* FORMULARIO DATOS GENERALES DE LA RESERVA */
-.container2 {
-  width: 40% !important;
-  float: right;
-}
-
-/* PAQUETES */
-.container3 {
-  width: 55% !important;
-  float: left;
-}
-
-.div1,
-.div2,
-.div3 {
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-/* DETALLES DE LA RESERVA */
-.container4 {
-  width: 100% !important;
-  float: left;
-}
-
-span {
-  font-size: 20px;
-  color: black;
-}
-
-.container4 .form {
-  justify-content: center;
-  align-items: center;
-}
-
-/* BOTON VOLVER */
-#volver {
-  width: 30%;
-}
-
-/* MEDIA QUERY DE LOS CONTENEDORES */
 @media screen and (max-width:1112px) {
-
-  .container,
-  .container2,
-  .container3,
-  .container4 {
-    width: 90% !important;
-  }
-
-  #volver {
-    width: 70%;
+  .container {
+      width: 60% !important;
   }
 }
+
+/* INPUTS */
+.input,
+.select {
+    min-width: 90%;
+}
+
+.col-md-6{
+  display: flex;
+  flex-direction: column;
+}
+
+.col-md-61{
+}
+
+/* .form-group1{
+  width: 50% !important;
+  display: flex;
+} */

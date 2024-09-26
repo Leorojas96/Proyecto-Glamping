@@ -161,7 +161,6 @@ namespace Glamping2.Controllers
 
 
 
-        // GET: Paquetes/Create
         public async Task<IActionResult> Create()
         {
             try
@@ -173,7 +172,6 @@ namespace Glamping2.Controllers
                     return RedirectToAction("Login", "Account");
                 }
 
-                // Obtener el rol del usuario actual
                 var userRole = await _context.Usuarios
                     .Where(u => u.Correo == userEmail)
                     .Select(u => u.IdRol)
@@ -184,47 +182,56 @@ namespace Glamping2.Controllers
                     return RedirectToAction("AccessDenied", "Account");
                 }
 
-                // Obtener el nombre del rol
                 var role = await _context.Roles
                     .Where(r => r.IdRol == userRole)
                     .Select(r => r.NomRol)
                     .FirstOrDefaultAsync();
 
-                // Determina si el usuario es administrador
                 ViewBag.IsAdmin = role == "Administrador";
 
-                // Obtener los servicios
                 var servicios = _context.Servicios.ToList();
 
-                // Obtener habitaciones activas (disponibles)
-                var habitacionesActivas = _context.Habitaciones
-                    .Where(h => h.EstadoHabitacion == "Disponible")
-                    .Select(h => new { h.IdHabitacion, h.NroHabitacion }) // Solo selecciona los campos necesarios
-                    .ToList();
+                var habitacionesNoEnPaqueteODisponibles = _context.Habitaciones
+             .Where(h => !_context.Paquetes.Any(p => p.IdHabitacion == h.IdHabitacion) && h.EstadoHabitacion == "Disponible")
+             .Select(h => new { h.IdHabitacion, h.NroHabitacion })
+             .ToList(); ;
 
-                // Asignar la lista de habitaciones activas y servicios a ViewBag
-                ViewBag.IdHabitacion = new SelectList(habitacionesActivas, "IdHabitacion", "NroHabitacion");
+                ViewBag.IdHabitacion = new SelectList(habitacionesNoEnPaqueteODisponibles, "IdHabitacion", "NroHabitacion");
                 ViewBag.IdServicios = new SelectList(servicios, "IdServicios", "NomServicio");
 
                 return View();
             }
             catch (Exception ex)
             {
-                // Manejar errores y pasar el mensaje de error a la vista de error
                 return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
             }
         }
 
 
-        // POST: Paquetes/Create
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdPaquetes,NomPaquete,Descripcion,Estado,IdServicios,IdHabitacion")] Paquete paquete)
+        public async Task<IActionResult> Create([Bind("IdPaquetes,NomPaquete,Descripcion,Estado,IdServicios,IdHabitacion,ImagenUrl")] Paquete paquete, IFormFile Imagen)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    // Guardar la imagen si se ha subido una
+                    if (Imagen != null && Imagen.Length > 0)
+                    {
+                        var fileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(Imagen.FileName);
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagenes/paquetes", fileName);
+
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            await Imagen.CopyToAsync(stream);
+                        }
+
+                        // Guardar la ruta de la imagen en el modelo
+                        paquete.ImagenUrl = "/imagenes/paquetes/" + fileName;
+                    }
+
                     // Obtener el servicio seleccionado
                     var servicio = await _context.Servicios.FindAsync(paquete.IdServicios);
                     if (servicio == null)
@@ -254,7 +261,7 @@ namespace Glamping2.Controllers
                     // Calcular el precio del paquete sumando el precio del servicio y del tipo de habitación
                     paquete.Precio = servicio.Precio + tipoHabitacion.Precio;
 
-                    // Guardar el paquete con el precio calculado
+                    // Guardar el paquete con el precio calculado y la ruta de la imagen
                     _context.Add(paquete);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
@@ -273,8 +280,6 @@ namespace Glamping2.Controllers
 
             return View(paquete);
         }
-
-
 
 
 
@@ -301,7 +306,7 @@ namespace Glamping2.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdPaquetes,NomPaquete,Descripcion,Estado,Precio,IdServicios,IdHabitacion,ImagenUrl")] Paquete paquete)
+        public async Task<IActionResult> Edit(int id,  Paquete paquete, IFormFile ImagenFile)
         {
             if (id != paquete.IdPaquetes)
             {
@@ -312,6 +317,30 @@ namespace Glamping2.Controllers
             {
                 try
                 {
+                    // Si el usuario sube una nueva imagen
+                    if (ImagenFile != null && ImagenFile.Length > 0)
+                    {
+                        // Define una ruta para guardar la imagen
+                        var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagenes/paquetes");
+                        if (!Directory.Exists(uploadsFolder))
+                        {
+                            Directory.CreateDirectory(uploadsFolder);
+                        }
+
+                        // Nombre único para el archivo
+                        var uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(ImagenFile.FileName);
+                        var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                        // Guardar la imagen en el servidor
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await ImagenFile.CopyToAsync(fileStream);
+                        }
+
+                        // Actualizar el campo ImagenUrl con la ruta de la imagen
+                        paquete.ImagenUrl = "/imagenes/paquetes/" + uniqueFileName;
+                    }
+
                     _context.Update(paquete);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
@@ -334,6 +363,7 @@ namespace Glamping2.Controllers
 
             return View(paquete);
         }
+
 
 
         // GET: Paquetes/Delete/5
@@ -396,7 +426,29 @@ namespace Glamping2.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Activate(int id)
+        {
+            var paquete = await _context.Paquetes.FindAsync(id);
+            if (paquete != null)
+            {
+                paquete.Estado = "Activo";
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Deactivate(int id)
+        {
+            var paquete = await _context.Paquetes.FindAsync(id);
+            if (paquete != null)
+            {
+                paquete.Estado = "Inactivo";
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+        }
         private bool PaqueteExists(int id)
         {
             return _context.Paquetes.Any(e => e.IdPaquetes == id);

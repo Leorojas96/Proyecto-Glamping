@@ -17,14 +17,15 @@
     
 </head>
 <body>
-    <div>
+    <div id="servicios-disponibles">
         <h1 class="text-center mb-4">Servicios Disponibles</h1>
         <div class="row">
             @foreach (var servicio in Model)
             {
-                <div class="col-md-4 d-flex align-items-stretch">
+                <div class="col-md-4">
                     <div class="card h-100">
-                        <img src="~/imagenes/Servicios/@servicio.ImagenUrl" class="card-img-top" alt="Imagen del Servicio">
+                        <img src="@servicio.ImagenUrl" class="card-img-top" alt="Imagen del Servicio">
+
 
                         <div class="card-body">
                             <h5 class="card-title">@servicio.NomServicio</h5>

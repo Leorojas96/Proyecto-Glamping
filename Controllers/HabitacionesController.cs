@@ -277,23 +277,7 @@ namespace Glamping2.Controllers
             return View(habitacione);
         }
 
-        // GET: Habitaciones/Search
-        public async Task<IActionResult> Search(int numeroHabitacion)
-        {
-            // Buscar la habitación por número de habitación (campo correcto: NroHabitacion)
-            var habitacione = await _context.Habitaciones
-                .FirstOrDefaultAsync(h => h.NroHabitacion == numeroHabitacion);
-
-            if (habitacione == null)
-            {
-                // Si no se encuentra la habitación, redirigir o mostrar un mensaje
-                TempData["Message"] = "Habitación no encontrada.";
-                return RedirectToAction(nameof(Index)); // O cualquier otra acción que quieras realizar
-            }
-
-            // Redirigir a la vista de detalles de la habitación encontrada
-            return RedirectToAction(nameof(Details), new { id = habitacione.IdHabitacion });
-        }
+        
 
 
 
@@ -319,26 +303,61 @@ namespace Glamping2.Controllers
         // POST: Habitaciones/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id) // Cambié el tipo de retorno a Task<ActionResult>
         {
-            if (_context.Habitaciones == null)
+            var habitacion = await _context.Habitaciones.FindAsync(id); // Usar FindAsync para la búsqueda asíncrona
+
+            if (habitacion == null)
             {
-                return Problem("Entity set 'GLAMPINGContext.Habitaciones'  is null.");
+                return NotFound();
             }
-            var habitacione = await _context.Habitaciones.FindAsync(id);
-            if (habitacione != null)
+
+            var paqueteRelacionado = await _context.Paquetes.AnyAsync(p => p.IdHabitacion == id); // Hacerlo asíncrono
+
+            if (paqueteRelacionado)
             {
-                _context.Habitaciones.Remove(habitacione);
+                // Cambiar estado de la habitación si está relacionada a un paquete
+                habitacion.EstadoHabitacion = "Inactiva";
+                _context.Habitaciones.Update(habitacion); // Asegúrate de usar "habitacion" en vez de "habitacione"
+                await _context.SaveChangesAsync();
+
+                TempData["Message"] = "La habitación está relacionada con un paquete, por lo que ha sido marcada como 'Inactiva'.";
             }
             else
             {
-                // Redirigir a una página de error personalizada
-                return RedirectToAction("Error", "Home", new { message = "La habitación no fue encontrada para eliminar." });
+                // Eliminar la habitación si no está relacionada a ningún paquete
+                _context.Habitaciones.Remove(habitacion);
+                await _context.SaveChangesAsync(); // Cambia a SaveChangesAsync para ser consistente
+
+                TempData["Message"] = "La habitación ha sido eliminada correctamente.";
             }
 
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
+
+
+        // POST: Habitaciones/Activate/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Activate(int id)
+        {
+            var habitacion = await _context.Habitaciones.FindAsync(id);
+
+            if (habitacion == null)
+            {
+                return NotFound();
+            }
+
+            // Cambiar el estado a "Disponible"
+            habitacion.EstadoHabitacion = "Disponible";
+            _context.Habitaciones.Update(habitacion);
+            await _context.SaveChangesAsync();
+
+            TempData["Message"] = "La habitación ha sido activada y está disponible.";
+
+            return RedirectToAction("Index");
+        }
+
 
         private bool HabitacioneExists(int id)
         {

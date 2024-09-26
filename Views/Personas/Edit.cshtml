@@ -20,67 +20,76 @@
 </head>
 
 <body>
-    <div>
+    <div class="container">
         <h1>Editar</h1>
 
-        <form asp-action="Edit">
+        <form asp-action="Edit" class="form">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdPersona" />
 
             <div class="nav1">
                 <label for="TipoDoc">Tipo de documento</label>
-                <input asp-for="TipoDoc" class="form-control" readonly />
+                <input asp-for="TipoDoc" class="input" readonly />
                 <span asp-validation-for="TipoDoc" class="text-danger"></span>
             </div>
 
             <div class="nav1">
                 <label asp-for="DocPersona" class="control-label">Nro. documento</label>
-                <input asp-for="DocPersona" class="form-control" readonly />
+                <input asp-for="DocPersona" class="input" readonly />
                 <span asp-validation-for="DocPersona" class="text-danger"></span>
 
                 <label asp-for="NomPersona" class="control-label">Nombres</label>
-                <input asp-for="NomPersona" maxlength="50" class="form-control" />
+                <input asp-for="NomPersona" maxlength="50" class="input" />
                 <span asp-validation-for="NomPersona" class="text-danger"></span>
 
                 <label asp-for="ApePersona" class="control-label">Apellidos</label>
-                <input asp-for="ApePersona" maxlength="50" class="form-control" />
+                <input asp-for="ApePersona" maxlength="50" class="input" />
                 <span asp-validation-for="ApePersona" class="text-danger"></span>
             </div>
 
             <div class="nav1">
                 <label asp-for="Edad" class="control-label">Edad</label>
-                <input asp-for="Edad" class="form-control" readonly />
+                <input asp-for="Edad" class="input" readonly />
                 <span asp-validation-for="Edad" class="text-danger"></span>
 
                 <label asp-for="Tel" class="control-label">Telefono/Celular</label>
-                <input asp-for="Tel" maxlength="50" class="form-control" />
+                <input asp-for="Tel" maxlength="50" class="input" />
                 <span asp-validation-for="Tel" class="text-danger"></span>
             </div>
 
             <div class="nav1">
                 <label asp-for="FechaNaci" class="control-label">Fecha de Nacimiento</label>
-                <input asp-for="FechaNaci" type="date" class="form-control" />
+                <input asp-for="FechaNaci" type="date" class="input" />
                 <span asp-validation-for="FechaNaci" class="text-danger"></span>
 
                 <label asp-for="Direcion" class="control-label">Dirección</label>
-                <input asp-for="Direcion" maxlength="50" class="form-control" />
+                <input asp-for="Direcion" maxlength="50" class="input" />
                 <span asp-validation-for="Direcion" class="text-danger"></span>
             </div>
 
             <div class="nav1">
                 <label asp-for="Nacionalidad" class="control-label">Nacionalidad</label>
-                <input asp-for="Nacionalidad" maxlength="50" class="form-control" readonly />
+                <input asp-for="Nacionalidad" maxlength="50" class="input" readonly />
                 <span asp-validation-for="Nacionalidad" class="text-danger"></span>
 
                 <label asp-for="Ciudad" class="control-label">Ciudad</label>
-                <input asp-for="Ciudad" maxlength="50" class="form-control" />
+                <input asp-for="Ciudad" maxlength="50" class="input" />
                 <span asp-validation-for="Ciudad" class="text-danger"></span>
             </div>
 
             <div class="div">
-
                 <input value="Guardar" type="submit" class="login-button" />
-                <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "TipoHabitacions")'" />
+                @if (User.IsInRole("Administrador"))
+                {
+                    <input value="Cancelar" type="button" class="login-button"
+                           onclick="location.href='@Url.Action("Index", "Personas")'" />
+                }
+                else
+                {
+                    <input value="Cancelar" type="button" class="login-button"
+                           onclick="location.href='@Url.Action("Perfil", "Account")'" />
+                }
+
             </div>
         </form>
     </div>
@@ -95,4 +104,3 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
-

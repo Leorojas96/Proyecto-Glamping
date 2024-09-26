@@ -46,6 +46,11 @@ namespace Glamping2.Controllers
 
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated && ViewBag.IsAdmin == true)
+            {
+                // Redirigir al Index de Habitaciones si es Administrador
+                return RedirectToAction("Index", "Habitaciones");
+            }
             return View();
         }
 

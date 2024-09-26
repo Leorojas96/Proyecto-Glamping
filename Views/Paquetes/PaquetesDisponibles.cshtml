@@ -10,6 +10,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/CSS/PagPrincipal.css">
+    <link rel="stylesheet" href="/CSS/paquetes.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,14 +18,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-    <div>
+    <div id="paquetes_disponibles">
         <h1 class="text-center mb-4">Paquetes Disponibles</h1>
         <div class="row">
             @foreach (var paquete in Model)
             {
                 <div class="col-md-4">
                     <div class="card h-100">
-                        <img src="~/imagenes/Paquetes/@paquete.ImagenUrl" class="card-img-top" alt="Imagen del Paquete">
+                       <img src="@Url.Content(paquete.ImagenUrl)" class="card-img-top" alt="Imagen del Paquete">
+
                         <div class="card-body">
                             <h5 class="card-title">@paquete.NomPaquete</h5>
                             <p class="card-text">@paquete.Descripcion</p>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PBR9WTLDAVI=",
+  "dgSpecHash": "awYA2nN82K4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\leoro\\source\\repos\\Glamping2\\Glamping2.csproj",
+  "projectFilePath": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\Glamping2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\leoro\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\leoro\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

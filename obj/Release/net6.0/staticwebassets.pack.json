@@ -1,435 +1,639 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\obj\\Release\\net6.0\\scopedcss\\projectbundle\\Glamping2.bundle.scp.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\obj\\Release\\net6.0\\scopedcss\\projectbundle\\Glamping2.bundle.scp.css",
       "PackagePath": "staticwebassets\\Glamping2.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\css\\PagPrincipal.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\PagPrincipal.css",
       "PackagePath": "staticwebassets\\css\\PagPrincipal.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\css\\clientes.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\clientes.css",
       "PackagePath": "staticwebassets\\css\\clientes.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\css\\detalles_serv.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\detalles_serv.css",
       "PackagePath": "staticwebassets\\css\\detalles_serv.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\css\\habitacion.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\habitacion.css",
       "PackagePath": "staticwebassets\\css\\habitacion.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\css\\login.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\login.css",
       "PackagePath": "staticwebassets\\css\\login.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\css\\paquetes.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\paquetes.css",
       "PackagePath": "staticwebassets\\css\\paquetes.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\css\\recuperar.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\perfil.css",
+      "PackagePath": "staticwebassets\\css\\perfil.css"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\recuperar.css",
       "PackagePath": "staticwebassets\\css\\recuperar.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\css\\registro.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\registro.css",
       "PackagePath": "staticwebassets\\css\\registro.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\css\\reservas.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\reservas.css",
       "PackagePath": "staticwebassets\\css\\reservas.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\css\\servicios.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\roles.css",
+      "PackagePath": "staticwebassets\\css\\roles.css"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\servicios.css",
       "PackagePath": "staticwebassets\\css\\servicios.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\css\\style.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\style.css",
       "PackagePath": "staticwebassets\\css\\style.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\css\\tipoHabitacion.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\tipoHabitacion.css",
       "PackagePath": "staticwebassets\\css\\tipoHabitacion.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\css\\usuarios.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\css\\usuarios.css",
       "PackagePath": "staticwebassets\\css\\usuarios.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Casino.jpeg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Casino.jpeg",
       "PackagePath": "staticwebassets\\imagenes\\Casino.jpeg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Habitaciones sencillas.jpeg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Habitaciones sencillas.jpeg",
       "PackagePath": "staticwebassets\\imagenes\\Habitaciones sencillas.jpeg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Habitaciones.jpeg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Habitaciones.jpeg",
       "PackagePath": "staticwebassets\\imagenes\\Habitaciones.jpeg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Restaurante.png",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Paquetes\\Paquete2.png",
+      "PackagePath": "staticwebassets\\imagenes\\Paquetes\\Paquete2.png"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Paquetes\\Paquete3.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Paquetes\\Paquete3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Paquetes\\Paquete4.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Paquetes\\Paquete4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Paquetes\\Paquete5.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\Paquetes\\Paquete5.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Paquetes\\Paquete6.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Paquetes\\Paquete6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Paquetes\\Paquete8.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Paquetes\\Paquete8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Paquetes\\Paquete9.png",
+      "PackagePath": "staticwebassets\\imagenes\\Paquetes\\Paquete9.png"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Restaurante.png",
       "PackagePath": "staticwebassets\\imagenes\\Restaurante.png"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\Toures.jpeg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Servicios\\Servicio1.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Servicios\\Servicio1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Servicios\\Servicio2.png",
+      "PackagePath": "staticwebassets\\imagenes\\Servicios\\Servicio2.png"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Servicios\\Servicio3.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Servicios\\Servicio3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Servicios\\Servicio4.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\Servicios\\Servicio4.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\Toures.jpeg",
       "PackagePath": "staticwebassets\\imagenes\\Toures.jpeg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\candado.webp",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\candado.webp",
       "PackagePath": "staticwebassets\\imagenes\\candado.webp"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\candadoabierto.png",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\candadoabierto.png",
       "PackagePath": "staticwebassets\\imagenes\\candadoabierto.png"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\correo.webp",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\correo.webp",
       "PackagePath": "staticwebassets\\imagenes\\correo.webp"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\desierto.jpeg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\desierto.jpeg",
       "PackagePath": "staticwebassets\\imagenes\\desierto.jpeg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\direccion.png",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\direccion.png",
       "PackagePath": "staticwebassets\\imagenes\\direccion.png"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\documento.png",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\documento.png",
       "PackagePath": "staticwebassets\\imagenes\\documento.png"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\fa-facebook-f.jpeg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fa-facebook-f.jpeg",
       "PackagePath": "staticwebassets\\imagenes\\fa-facebook-f.jpeg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\fa-instagram.jpeg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fa-instagram.jpeg",
       "PackagePath": "staticwebassets\\imagenes\\fa-instagram.jpeg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\fa-twitter.jpeg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fa-twitter.jpeg",
       "PackagePath": "staticwebassets\\imagenes\\fa-twitter.jpeg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\gallery1.jpg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\desierto.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\desierto.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\exotico.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\exotico.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\exotico1.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\exotico1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\exotico2.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\exotico2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\exotico3.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\exotico3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\fondo.mp4",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\fondo.mp4"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\fondo.webp",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\fondo.webp"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\fondo1.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\fondo1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\fondo4.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\fondo4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\fondo5.webp",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\fondo5.webp"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen1.webp",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen1.webp"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen10.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen11.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen11.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen12.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen13.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen13.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen14.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen14.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen15.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen15.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen16.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen16.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen17.avif",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen17.avif"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen18.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen18.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen19.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen19.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen2.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen2.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen20.jfif",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen20.jfif"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen21.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen21.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen22.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen22.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen23.webp",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen23.webp"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen24.jfif",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen24.jfif"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen25.webp",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen25.webp"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen26.jfif",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen26.jfif"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen27.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen27.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen3.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen4.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen5.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen5.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen6.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen6.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen7.webp",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen7.webp"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen8.webp",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen8.webp"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\imagen9.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\imagen9.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\fondo\\images28.jfif",
+      "PackagePath": "staticwebassets\\imagenes\\fondo\\images28.jfif"
+    },
+    {
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\gallery1.jpg",
       "PackagePath": "staticwebassets\\imagenes\\gallery1.jpg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\gallery2.jpg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\gallery2.jpg",
       "PackagePath": "staticwebassets\\imagenes\\gallery2.jpg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\gallery3.jpg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\gallery3.jpg",
       "PackagePath": "staticwebassets\\imagenes\\gallery3.jpg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\gallery4.jpg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\gallery4.jpg",
       "PackagePath": "staticwebassets\\imagenes\\gallery4.jpg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\gallery5.jpg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\gallery5.jpg",
       "PackagePath": "staticwebassets\\imagenes\\gallery5.jpg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\gallery6.jpg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\gallery6.jpg",
       "PackagePath": "staticwebassets\\imagenes\\gallery6.jpg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\habitaciones lujosas.jpeg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\habitaciones lujosas.jpeg",
       "PackagePath": "staticwebassets\\imagenes\\habitaciones lujosas.jpeg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\hero_image.jpg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\hero_image.jpg",
       "PackagePath": "staticwebassets\\imagenes\\hero_image.jpg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\hotel1.jpg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\hotel1.jpg",
       "PackagePath": "staticwebassets\\imagenes\\hotel1.jpg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\hotel2.jpg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\hotel2.jpg",
       "PackagePath": "staticwebassets\\imagenes\\hotel2.jpg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\hotel3.jpg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\hotel3.jpg",
       "PackagePath": "staticwebassets\\imagenes\\hotel3.jpg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\hotel4.jpg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\hotel4.jpg",
       "PackagePath": "staticwebassets\\imagenes\\hotel4.jpg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\hotel5.jpg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\hotel5.jpg",
       "PackagePath": "staticwebassets\\imagenes\\hotel5.jpg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\hotel_image.jpg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\hotel_image.jpg",
       "PackagePath": "staticwebassets\\imagenes\\hotel_image.jpg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\icono.jpg",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\icono.jpg",
       "PackagePath": "staticwebassets\\imagenes\\icono.jpg"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\icono2.png",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\icono2.png",
       "PackagePath": "staticwebassets\\imagenes\\icono2.png"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\lupa.png",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\lupa.png",
       "PackagePath": "staticwebassets\\imagenes\\lupa.png"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\pais.png",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\pais.png",
       "PackagePath": "staticwebassets\\imagenes\\pais.png"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\spa.png",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\spa.png",
       "PackagePath": "staticwebassets\\imagenes\\spa.png"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\telefono.webp",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\telefono.webp",
       "PackagePath": "staticwebassets\\imagenes\\telefono.webp"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\imagenes\\usuario.webp",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\imagenes\\usuario.webp",
       "PackagePath": "staticwebassets\\imagenes\\usuario.webp"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\js\\funcionClick.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\js\\funcionClick.js",
       "PackagePath": "staticwebassets\\js\\funcionClick.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\leoro\\source\\repos\\Glamping2\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\leoro\\Desktop\\Proyecto2\\Glamping2-20240921T172336Z-001\\Glamping2\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {

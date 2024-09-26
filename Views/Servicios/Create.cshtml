@@ -1,7 +1,7 @@
 ﻿@model Glamping2.Models.Servicio
 
 @{
-    ViewData["Title"] = "Crear";
+    ViewData["Title"] = "Crear Servicio";
 }
 
 <!DOCTYPE html>
@@ -11,31 +11,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="/CSS/tipoHabitacion.css">
+    <link rel="stylesheet" href="/CSS/servicios.css">
     <link rel="stylesheet" href="/CSS/PagPrincipal.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" href="/imagenes/icono.jpg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <body>
-    <div>
+    <div class="container">
         <h1>Crear Servicio</h1>
-        <form class="form" asp-action="Create">
+        <form class="form" asp-action="Create" enctype="multipart/form-data">
 
             <div class="nav1">
-                <input placeholder="Nombre del Servicio" asp-for="NomServicio" maxlength="50" class="input" required="" title="Nombre del Servicio" />
+                <input placeholder="Nombre del Servicio" asp-for="NomServicio" maxlength="50" class="input" required=""
+                    title="Nombre del Servicio" />
                 <span asp-validation-for="NomServicio" class="text-danger"></span>
             </div>
 
             <div class="nav1">
-                <input placeholder="Descripción" asp-for="Descripcion" maxlength="50" class="input" required="" title="Descripción" />
-                <span asp-validation-for="Descripcion" class="text-danger"></span>
+                <input placeholder="Precio" asp-for="Precio" class="input" required="" step="any" title="Precio" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
             </div>
 
             <div class="nav1">
-                <label for="TipoServicio">Tipo de Servicio</label>
                 <select asp-for="TipoServicio" class="select" title="Tipo de Servicio">
                     <option value="Recreación">Recreación</option>
                     <option value="Salud">Salud</option>
@@ -45,25 +45,29 @@
             </div>
 
             <div class="nav1">
-                <input placeholder="Precio" asp-for="Precio" class="input" required="" step="any" title="Precio" />
-                <span asp-validation-for="Precio" class="text-danger"></span>
+                <input placeholder="Descripción" asp-for="Descripcion" maxlength="50" class="input" required=""
+                    title="Descripción" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
-            <div class="nav1">
-                <label for="ImagenUrl">Imagen</label>
-                <input placeholder="Imagen" asp-for="ImagenUrl" maxlength="200" class="form-control" />
-                <span asp-validation-for="ImagenUrl" class="text-danger"></span>
-            </div>
+
+             <div class="nav1">
+    <label for="ImagenFile">Adjuntar Imagen:</label>
+    <input type="file" name="ImagenFile" class="input" accept="image/*" />
+    <span class="text-danger"></span>
+</div>
+
 
             <div id="div_btn">
                 <input value="Guardar" type="submit" class="login-button" />
-                <input value="Cancelar" type="button" class="login-button" onclick="location.href='@Url.Action("Index", "Servicios")'" />
+                <input value="Cancelar" type="button" class="login-button"
+                    onclick="location.href='@Url.Action("Index", "Servicios")'" />
             </div>
         </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
