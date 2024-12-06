@@ -93,6 +93,7 @@ namespace Glamping2.Controllers
         public IActionResult Create()
         {
             // Verifica si el usuario es administrador
+            bool isAuthenticated = User.Identity.IsAuthenticated;
             bool isAdmin = User.IsInRole("Admin"); // Asegúrate de que el rol "Admin" existe en tu sistema
 
             ViewBag.IsAdmin = isAdmin;
@@ -108,32 +109,36 @@ namespace Glamping2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdUsuario,Correo,Contraseña,IdPersona,IdRol")] Usuario usuario)
         {
+            // Si el usuario no es administrador, permitir campos vacíos para Correo y Contraseña
+            bool isAdmin = User.IsInRole("Admin");
+            if (!isAdmin)
+            {
+                // Remover la validación de los campos 'Correo' y 'Contraseña' del ModelState
+                ModelState.Remove("Correo");
+                ModelState.Remove("Contraseña");
+
+                // Obtener la última persona creada
+                var lastPersona = await _context.Personas.OrderByDescending(p => p.IdPersona).FirstOrDefaultAsync();
+                usuario.IdPersona = lastPersona?.IdPersona;
+
+                // Establecer el IdRol a 2 para clientes
+                usuario.IdRol = 2;
+            }
+
             if (ModelState.IsValid)
             {
-                // Si el usuario no es administrador, establecer valores predeterminados
-                bool isAdmin = User.IsInRole("Admin");
-                if (!isAdmin)
-                {
-                    // Obtener la última persona creada
-                    var lastPersona = await _context.Personas.OrderByDescending(p => p.IdPersona).FirstOrDefaultAsync();
-                    usuario.IdPersona = lastPersona?.IdPersona;
-
-                    // Establecer el IdRol a 2 para clientes
-                    usuario.IdRol = 2;
-                }
-
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
-
                 return RedirectToAction("Index", "Home");
             }
 
-            // Si hay un error en el modelo, vuelve a mostrar la vista Create con datos de selección
-            ViewBag.IsAdmin = User.IsInRole("Admin");
+            // Si hay un error en el modelo, volver a mostrar la vista con los datos necesarios
+            ViewBag.IsAdmin = isAdmin;
             ViewBag.IdPersona = new SelectList(_context.Personas, "IdPersona", "NomPersona", usuario.IdPersona);
             ViewBag.IdRol = new SelectList(_context.Roles, "IdRol", "NomRol", usuario.IdRol);
             return View(usuario);
         }
+
 
         // GET: Usuarios/Buscar
         public IActionResult Buscar(string correo)

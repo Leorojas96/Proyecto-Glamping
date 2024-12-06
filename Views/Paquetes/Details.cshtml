@@ -16,33 +16,33 @@
     <link rel="icon" href="/imagenes/icono.jpg">
 </head>
 
-<div>
+<div class="container">
     <h1>Detalles</h1>
-    <form>
+    <form class="form">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <label asp-for="NomPaquete" class="form-label">Nombre del Paquete</label>
-                <input type="text" class="form-control" value="@Model.NomPaquete" readonly />
+                <input type="text" class="input" value="@Model.NomPaquete" readonly />
             </div>
             <div class="col-md-6">
                 <label asp-for="Descripcion" class="form-label">Descripción</label>
-                <input type="text" class="form-control" value="@Model.Descripcion" readonly />
+                <input type="text" class="input" value="@Model.Descripcion" readonly />
             </div>
             <div class="col-md-6">
                 <label asp-for="Estado" class="form-label">Estado</label>
-                <input type="text" class="form-control" value="@Model.Estado" readonly />
+                <input type="text" class="input" value="@Model.Estado" readonly />
             </div>
             <div class="col-md-6">
                 <label asp-for="Precio" class="form-label">Precio</label>
-                <input type="text" class="form-control" value="@Model.Precio.ToString("0.00")" readonly />
+                <input type="text" class="input" value="@Model.Precio.ToString("0.00")" readonly />
             </div>
             <div class="col-md-6">
                 <label asp-for="IdHabitacionNavigation" class="form-label">Habitación</label>
-                <input type="text" class="form-control" value="@Model.IdHabitacionNavigation?.NroHabitacion" readonly />
+                <input type="text" class="input" value="@Model.IdHabitacionNavigation?.NroHabitacion" readonly />
             </div>
             <div class="col-md-6">
                 <label asp-for="IdServiciosNavigation" class="form-label">Servicio</label>
-                <input type="text" class="form-control" value="@Model.IdServiciosNavigation?.NomServicio" readonly />
+                <input type="text" class="input" value="@Model.IdServiciosNavigation?.NomServicio" readonly />
             </div>
         </div>
         <div class="mt-3">

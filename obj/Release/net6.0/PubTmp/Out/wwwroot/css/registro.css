@@ -1,54 +1,59 @@
 .container {
-    max-width: 100%;
-    height: 650px;
-    margin: 60px;
-  }
-  
-  .form {
-    margin-top: 20px;
-    display: flex;
-    
-  }
+  max-width: 100%;
+  margin: 30px;
+}
 
-  .div{
-    width: 100%;
-  }
+.div {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
 
-  /* SELECT */
+.nav1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-  .form .select {
-    width: 40%;
-    font-size: 15px !important;
-    font-family: lateef !important;
-  }
-  
-  
-  /* INPUTS */
-  
-  .form .input {
-    width: 70%;
-    font-size: 15px !important;
-    padding: 4px;
-    font-family: lateef !important;
-  }
-  
+/* SELECT */
+.form .select {
+  min-width: 80%;
+  font-size: 15px !important;
+}
 
-  option{
-    color: black;
-  }
-  
-  .form .login-button {
-    width: 50%;
-  }
+option {
+  color: black;
+}
 
-  .agreement {
-    display: block;
-    text-align: center;
-    margin-top: 200px;
-  }
-  
-  .agreement a {
-    text-decoration: none;
-    color: #2a4b7c;
-    font-size: 13px;
-  }
+/* INPUTS */
+.form .input {
+  min-width: 80%;
+  font-size: 15px !important;
+  padding: 4px;
+  font-family: lateef !important;
+}
+
+#ciudad{
+  min-width: 50% !important;
+}
+
+
+/* BOTON GUARDAR Y CANCELAR */
+.login-button {
+  width: 10% !important;
+}
+
+/* CONTENEDORES DE INPUT EN DETALLES CLIENTES */
+.col-md-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.col-md-6 .input {
+  min-width: 100%;
+}

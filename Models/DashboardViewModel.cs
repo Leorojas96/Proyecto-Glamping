@@ -6,5 +6,6 @@ namespace Glamping2.Models
     {
         public IEnumerable<Reserva> Reservas { get; set; }
         public decimal TotalGeneral { get; set; }
+        public IEnumerable<Habitacione> Habitaciones { get; set; }
     }
 }

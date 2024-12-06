@@ -24,7 +24,7 @@ namespace Glamping2.Models
         public virtual DbSet<Reserva> Reservas { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
         public virtual DbSet<RolesPermiso> RolesPermisos { get; set; } = null!;
-        public virtual DbSet<Servicio> Servicios { get; set; } = null!;
+        public virtual DbSet<Servicio> Servicios { get; set; }
         public virtual DbSet<TipoHabitacion> TipoHabitacions { get; set; } = null!;
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
 
@@ -32,8 +32,9 @@ namespace Glamping2.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=LEO\\SQLEXPRESS; database=GLAMPING; Integrated Security=true;");
+                optionsBuilder.UseSqlServer(
+                    // Usa el archivo de configuración para la cadena de conexión
+                    "Name=ConnectionStrings:DefaultConnection");
             }
         }
 
@@ -267,7 +268,7 @@ namespace Glamping2.Models
             });
 
             OnModelCreatingPartial(modelBuilder);
-        }
+        }   
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }

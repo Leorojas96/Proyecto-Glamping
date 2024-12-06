@@ -15,6 +15,7 @@ namespace Glamping2.Models
         public string Descripcion { get; set; } = null!;
         public string TipoServicio { get; set; } = null!;
         public double Precio { get; set; }
+        public string? ImagenUrl { get; set; }
 
         // Colección para la relación muchos a muchos a través de PaqueteServicios
         public virtual ICollection<PaqueteServicio> PaqueteServicios { get; set; }

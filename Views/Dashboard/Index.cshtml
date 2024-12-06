@@ -10,39 +10,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Glamping2</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .dashboard-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .chart-container {
+            width: 45%; /* Ajusta el ancho de las gráficas */
+        }
+
+        .back-button {
+            align-self: flex-start;
+            padding: 10px;
+            text-align: center;
+            background-color: #000;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
     <div>
+        
         <h1>Dashboard</h1>
-        <div>
-            <h2>Reservas Realizadas</h2>
-            <canvas id="reservasChart"></canvas>
+
+        <div class="dashboard-container">
+            <a href="@Url.Action("Index", "Habitaciones")" class="back-button">Atrás</a>
+            <div class="chart-container">
+                <h2>Reservas Realizadas</h2>
+                <canvas id="reservasChart"></canvas>
+            </div>
+
+            <!-- Gráfica de Estados de Habitaciones -->
+            <div class="chart-container">
+                <h2>Estados de Habitaciones</h2>
+                <canvas id="habitacionesChart"></canvas>
+            </div>
         </div>
+
         <div>
             <h2>Total General</h2>
-            <p>@Model.TotalGeneral.ToString("C")</p>
+            <p style="text-align: center;">@Model.TotalGeneral.ToString("C")</p>
         </div>
     </div>
 
     <script>
-        // Obtén el contexto del canvas
-        const ctx = document.getElementById('reservasChart').getContext('2d');
-
-        // Asegúrate de que los datos se serialicen correctamente
+        // Gráfica de Reservas
+        const reservasCtx = document.getElementById('reservasChart').getContext('2d');
         const reservasData = @Html.Raw(Json.Serialize(Model.Reservas));
 
-        // Mapea las fechas y los montos de las reservas
-        const dates = reservasData.map(r => new Date(r.fecha).toLocaleDateString());
-        const amounts = reservasData.map(r => r.total);
+        const reservasDates = reservasData.map(r => new Date(r.fecha).toLocaleDateString());
+        const reservasAmounts = reservasData.map(r => r.total);
 
-        // Crea la gráfica
-        new Chart(ctx, {
+        new Chart(reservasCtx, {
             type: 'bar',
             data: {
-                labels: dates,
+                labels: reservasDates,
                 datasets: [{
                     label: 'Monto de Reservas',
-                    data: amounts,
+                    data: reservasAmounts,
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
@@ -56,6 +91,52 @@
                 }
             }
         });
+
+        // Gráfica de Estados de Habitaciones
+        const habitacionesCtx = document.getElementById('habitacionesChart').getContext('2d');
+        const habitacionesData = @Html.Raw(Json.Serialize(Model.Habitaciones));
+
+        // Calcular la cantidad de habitaciones por estado
+        const estadosCount = habitacionesData.reduce((acc, habitacion) => {
+            const estado = habitacion.estadoHabitacion;
+            if (!acc[estado]) {
+                acc[estado] = 0;
+            }
+            acc[estado]++;
+            return acc;
+        }, {});
+
+        const habitacionEstados = Object.keys(estadosCount);
+        const habitacionCantidades = Object.values(estadosCount);
+
+        new Chart(habitacionesCtx, {
+            type: 'pie',
+            data: {
+                labels: habitacionEstados,
+                datasets: [{
+                    label: 'Estado de Habitaciones',
+                    data: habitacionCantidades,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
     </script>
 </body>
 </html>
+

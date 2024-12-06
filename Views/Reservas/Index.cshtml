@@ -13,9 +13,20 @@
     <link rel="stylesheet" href="/CSS/habitacion.css">
     <link rel="stylesheet" href="/CSS/PagPrincipal.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" href="/imagenes/icono.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Mensaje"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 
 <body>
     <div id="menusection">
@@ -29,35 +40,32 @@
                 <a href="@Url.Action("Index", "Paquetes")">Paquetes</a>
                 <a href="@Url.Action("Index", "Personas")">Clientes</a>
                 <a href="@Url.Action("Index", "Reservas")">Reservas</a>
+                <a href="@Url.Action("Index", "Dashboard")">Dashboard</a>
             </div>
         }
 
         <section id="tabla" class="navbar navbar-light bg-light">
-            <div class="container-fluid">
-                <form class="d-flex mb-4" method="get" action="@Url.Action("Search", "Reservas")">
-                    <input class="form-control me-2" name="searchTerm" type="text" placeholder="Buscar por Nombre o Identificador">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
+            <div id="crear" class="mb-3">
+                <h1>Reservas</h1>
+                @if (isAdmin)
+                {
+                    <a href="@Url.Action("Create", "Reservas")" class="btn btn-primary">Nueva Reserva</a>
+                }
+            </div>
 
-                <div id="crear" class="mb-3">
-                    <h1>Reservas</h1>
-                    @if (isAdmin)
-                    {
-                        <a href="@Url.Action("Create", "Reservas")" class="btn btn-primary">Nueva Reserva</a>
-                    }
-                </div>
-
-                <div class="regis">
-                    <table class="table table-striped table-hover">
+            <table id="example" class="table table-striped table-hover">
                 <thead>
                     <tr>
-                                <th>Fecha de Reserva</th>
-                                <th>Total</th>
-                                <th>Abono</th>
-                                <th>Estado</th>
-                                <th>Paquete</th>
-                                <th>Usuario</th>
-                                <th>Operaciones</th>
+                        <th title="Fecha de Reserva">Fecha de Reserva</th>
+                        <th class="th" title="Total">Total</th>
+                        <th class="th" title="Abono">Abono</th>
+                        <th class="th" title="Estado">Estado</th>
+                        <th class="th" title="Paquete">Paquete</th>
+                        <th class="th" title="Usuario">Usuario</th>
+                        @if (isAdmin)
+                        {
+                            <th title="Operaciones">Operaciones</th>
+                        }
                     </tr>
                 </thead>
                 <tbody>
@@ -65,36 +73,75 @@
                     {
                         <tr>
                             <td>@item.FechaReserva.ToString("dd/MM/yyyy")</td>
+                            <td class="td">@item.Total.ToString("0")</td> <!-- Formatea Total -->
+                            <td class="td">@item.Abono.ToString("0")</td>
+                            <td class="td">@Html.DisplayFor(modelItem => item.EstadoReserva)</td>
+                            <td class="td">@Html.DisplayFor(modelItem => item.IdPaquetesNavigation.NomPaquete)</td>
+                            <td class="td">@Html.DisplayFor(modelItem => item.IdUsuarioNavigation.IdPersonaNavigation.NomPersona)</td>
+                            @if (isAdmin)
+                            {
+                                <td>
+                                    <a href="@Url.Action("Details", new { id = item.IdReservas })" class="btn btn-info btn-sm" title="Detalles">
+                                        <i class="bi bi-info-circle"></i>
+                                    </a>
 
+                                    @if (item.EstadoReserva != "Cancelada" && item.EstadoReserva != "Finalizada")
+                                    {
+                                        <!-- Botón para cambiar estado -->
+                                        <form asp-action="CambiarEstado" method="post" style="display:inline;">
+                                            <input type="hidden" name="id" value="@item.IdReservas" />
+                                            <button type="submit" class="btn btn-secondary btn-sm" title="@item.EstadoReserva">
+                                                <i class="bi bi-arrow-repeat"></i>
+                                            </button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted" title="@item.EstadoReserva">
+                                            <i class="bi bi-arrow-repeat"></i>
+                                        </span>
+                                    }
 
-                                    <td>@item.Total.ToString("0")</td> <!-- Formatea Total -->
-                                    <td>@item.Abono.ToString("0")</td>
-                                    <td>@Html.DisplayFor(modelItem => item.EstadoReserva)</td>
-                            <td>@Html.DisplayFor(modelItem => item.IdPaquetesNavigation.NomPaquete)</td>
-                            <td>@Html.DisplayFor(modelItem => item.IdUsuarioNavigation.IdPersonaNavigation.NomPersona)</td>
-                            <td>
-                                
-                                <a href="@Url.Action("Details", new { id = item.IdReservas })" class="btn btn-info btn-sm">Detalles</a> |
-                                
-                            </td>
+                                    @if (item.EstadoReserva == "Pendiente")
+                                    {
+                                        <form asp-action="Cancel" method="post" style="display:inline;">
+                                            <input type="hidden" name="id" value="@item.IdReservas" />
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Cancelar">
+                                                <i class="bi bi-x-circle"></i>
+                                            </button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted" title="Cancelar no disponible">
+                                            <i class="bi bi-x-circle"></i>
+                                        </span>
+                                    }
+                                </td>
+                            }
                         </tr>
                     }
                     @if (!Model.Any())
                     {
                         <tr>
-                            <td colspan="10" class="text-center">No hay reservas disponibles.</td>
+                            <td colspan="@(isAdmin ? 6 : 5)" class="text-center">No hay reservas disponibles.</td>
                         </tr>
                     }
                 </tbody>
             </table>
-            </div>
-        </div>
         </section>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <script src="/js/funcionClick.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 </body>
-    

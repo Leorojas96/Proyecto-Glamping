@@ -34,33 +34,33 @@ namespace Glamping2.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Busca el usuario en la base de datos
                 var user = await _context.Usuarios
                     .Where(u => u.Correo == model.Correo && u.Contraseña == model.Contraseña)
                     .FirstOrDefaultAsync();
 
                 if (user != null)
                 {
-                    // Crea las claims para el usuario autenticado
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, user.Correo)
-                        // Agrega más claims si es necesario
                     };
 
-                    // Crea la identidad con las claims y especifica el esquema de autenticación
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var authProperties = new AuthenticationProperties
                     {
-                        // Puedes agregar propiedades de autenticación si es necesario
+                        
                     };
 
-                    // Inicia la sesión del usuario
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity), authProperties);
-
-                    // Redirige a la página principal después de iniciar sesión
-                    return RedirectToAction("Index", "Home");
+                    if (user.IdRol == 1)
+                    {
+                        return RedirectToAction("Index", "Habitaciones");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 else
                 {
@@ -85,6 +85,46 @@ namespace Glamping2.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+
+        public IActionResult Perfil()
+        {
+            
+            var correoUsuario = User.Identity.Name; 
+
+            if (correoUsuario == null)
+            {
+                return RedirectToAction("Login", "Account"); 
+            }
+
+           
+            var usuario = _context.Usuarios
+                .Where(u => u.Correo == correoUsuario)
+                .FirstOrDefault();
+
+            if (usuario == null)
+            {
+                return NotFound(); 
+            }
+            var esAdmin = usuario.IdRol == 1;
+            ViewBag.IsAdmin = esAdmin;
+
+            var persona = _context.Personas
+                .Where(p => p.IdPersona == usuario.IdPersona)
+                .FirstOrDefault();
+
+            var reservas = _context.Reservas
+                .Where(r => r.IdUsuario == usuario.IdUsuario)
+                .OrderByDescending(r => r.FechaReserva) 
+                .Take(5) 
+                .ToList();
+
+            
+            ViewBag.Usuario = usuario;
+            ViewBag.Persona = persona;
+            ViewBag.Reservas = reservas;
+
+            return View();
+        }
         public IActionResult AccessDenied()
         {
             return View();

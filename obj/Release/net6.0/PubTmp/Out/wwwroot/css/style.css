@@ -1,123 +1,154 @@
-@import url('https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lateef&display=swap');
-
 /* Estilos generales */
 :root {
-  --arena-dorada: #D8CBAF;
-  --terracota: #C77B4A;
-  --azul-profundo: #2A4B7C;
-  --ocre: #C2A77D;
-  --verde-cactus: #A3C6A1;
+    --arena-dorada: #D8CBAF;
+    --terracota: #C77B4A;
+    --azul-profundo: #2A4B7C;
+    --ocre: #C2A77D;
+    --verde-cactus: #A3C6A1;
 }
+
 body {
-    
-    
     background-color: var(--arena-dorada);
+}
 
-  background-image: linear-gradient(to bottom, #F5F5DC, #FFFFE0);
-}  
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
 
+/* Estilo para la sección hero */
+.hero {
+    display: flex; /* Usamos flexbox para centrar el contenido */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    position: relative;
+    color: #f0e6d6; /* Color blanco para que el texto sea visible sobre la imagen */
+    text-align: center; /* Centra el texto */
+    height: 100vh; /* Altura completa de la pantalla */
+    overflow: hidden; /* Para evitar que el video salga de los bordes */
+}
 
+#background-video {
+    position: fixed;
+    object-fit: cover; /* Hace que el video cubra todo el área sin distorsionarse */
+    transform: translate(-50%, -50%); /* Centra el video */
+    z-index: 1; /* El video estará en el fondo */
 
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}
 
-
-  
-  /* Estilos de la sección hero */
-  .hero {
-    background-image: url('hero_image.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #8d7a7a;
+.hero-content {
+    position: relative;
+    z-index: 1; /* Asegura que el contenido esté frente al video */
+    color: #f0e6d6;
     text-align: center;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  }
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mejor legibilidad */
+    padding: 20px;
+    border-radius: 10px;
+
+
+}
+
+.about, .Servicios {
+    position: relative;
+    z-index: 1; /* Asegura que estas secciones estén frente al video */
+    padding: 50px 20px; /* Espaciado interno */
+}
+
+.hero h1 {
+    color: #f0e6d6 !important;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.botone {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none !important;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem; /* Ajusta el tamaño del título en pantallas pequeñas */
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
 
 
 .texto-con-margen {
-  margin-top: 20px; 
-  margin-bottom: 20px; 
-  margin-left: 30px; 
-  margin-right: 30px; 
-}
-  
-  .hero h1 {
-    font-size: 48px;
+    margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 30px; 
-   margin-right: 30px;
-   font-family: 'Ga Maamli', sans-serif, !important;
-  
-
-  }
- 
-
-  
-  
-  .hero p {
-    font-size: 24px;
-    margin-bottom: 40px;
-  }
-  
-  
-  
-  .btn:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Estilos de la sección "Sobre" */
-  .about {
-  background-color: #B2EBF2; /* Color de fondo */
-  padding: 20px;
-  text-align: Justicenterfied; /* Centra el contenido horizontalmente */
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 20px;
 }
 
-  
-  .row {
+/* Estilos de la sección "Sobre" */
+.about {
+    background-color: #c77c4a7a;
+    /* Color de fondo */
+    padding: 30px;
+    /* Centra el contenido horizontalmente */
+}
+
+
+.row {
     display: flex;
     flex-wrap: wrap;
     margin: -15px;
-  }
-  
-  .col-6 {
+}
+
+.col-6 {
     flex: 0 0 50%;
     max-width: 50%;
     width: fit-content;
     height: auto;
-    
+}
 
-  }
-  
-  .image-container img {
+.image-container img {
     max-width: 100%;
     height: auto;
     width: fit-content;
-    
-  }
-  
-  /* Estilos de tarjeta servicios  */
-  
+}
 
-  
-  .Servicios {
+/* Estilos de tarjeta servicios  */
+.Servicios {
     display: flex;
-    flex-direction: column; /* Apila las filas una encima de la otra */
-/* Suggested code may be subject to a license. Learn more: ~LicenseLog:618873460. */
+    flex-direction: column;
+    /* Apila las filas una encima de la otra */
+    /* Suggested code may be subject to a license. Learn more: ~LicenseLog:618873460. */
     align-items: center;
     justify-content: center;
     margin: 20px;
-  }
-  
-  .cards-row {
+}
+
+.cards-row {
     display: flex;
-    justify-content: space-between; /* Distribuye las tarjetas con espacio entre ellas */
-  }
-  
-  
-  .card {
+    justify-content: space-between;
+    /* Distribuye las tarjetas con espacio entre ellas */
+    margin: 20px 0;
+}
+
+.card {
     position: relative;
     width: 220px;
     height: 320px;
@@ -130,80 +161,70 @@ body {
     border-radius: 15px;
     cursor: pointer;
     margin: 10px;
-    flex: 1; /* Las tarjetas ocupan el espacio disponible */
-    min-width: 250px; /* Ancho mínimo para evitar que se compriman demasiado */
-  }
-  
-  .card::before,
-  .card::after {
-    position: absolute;
-    content: "";
-    width: 20%;
-    height: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    font-weight: bold;
-    background-color: var(--verde-cactus);
-    border-radius: 15px;
-    transition: all 0.5s;
-  }
-  
-  .card::before {
-    top: 0;
-    right: 0;
-    border-radius: 0 15px 0 100%;
-  }
-  
-  .card::after {
-    bottom: 0;
-    left: 0;
-    border-radius: 0 100%  0 15px;
-  }
-  
-  .card:hover::before,
-  .card:hover:after {
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-    transition: all 0.5s;
-  }
-  
-  .card:hover:after {
-    background-image: url("/imagenes/Casino.jpeg");
-    background-position: center;
-    background-size: cover;
-    
-  }
-  
-  #carta2:hover::after {
+    flex: 1;
+    /* Las tarjetas ocupan el espacio disponible */
+    min-width: 250px;
+    /* Ancho mínimo para evitar que se compriman demasiado */
+}
+
+    .card::before,
+    .card::after {
+        position: absolute;
+        content: "";
+        width: 20%;
+        height: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        font-weight: bold;
+        background-color: var(--verde-cactus);
+        border-radius: 15px;
+        transition: all 0.5s;
+    }
+
+    .card::before {
+        top: 0;
+        right: 0;
+        border-radius: 0 15px 0 100%;
+    }
+
+    .card::after {
+        bottom: 0;
+        left: 0;
+        border-radius: 0 100% 0 15px;
+    }
+
+    .card:hover::before,
+    .card:hover:after {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        transition: all 0.5s;
+    }
+
+    .card:hover:after {
+        background-image: url("/imagenes/Casino.jpeg");
+        background-position: center;
+        background-size: cover;
+    }
+
+#carta2:hover::after {
     background-image: url("/imagenes/Restaurante.png");
-  }
-  
-  #carta3:hover::after {
+}
+
+#carta3:hover::after {
     background-image: url("/imagenes/spa.png");
-  }
-  
-  #carta4:hover::after {
+}
+
+#carta4:hover::after {
     background-image: url("/imagenes/Toures.jpeg");
-  }
-  
-  #carta5:hover::after {
+}
+
+#carta5:hover::after {
     background-image: url("/imagenes/Habitaciones sencillas.jpeg");
-  }
-  
-  #carta6:hover::after {
+}
+
+#carta6:hover::after {
     background-image: url("/imagenes/habitaciones lujosas.jpeg");
-  }
-
-
-
-  .Servicios{
-    display: flex;
-    
-    justify-content: space-between;
-  }
-
-  
-  
+}

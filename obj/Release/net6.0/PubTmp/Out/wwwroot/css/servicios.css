@@ -8,7 +8,7 @@
 
 /* FORMULARIO SERVICIOS */
 .container {
-    min-width: 50% !important;
+    width: 50% !important;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -19,9 +19,9 @@
 .form {
     width: 90%;
     display: flex;
+    flex-direction: column;
     justify-content: center !important;
     align-items: center;
-    flex-direction: column;
     gap: 15px;
 }
 
@@ -35,72 +35,18 @@
     .container {
         width: 90% !important;
     }
-
-    .registrarServicios {
-        order: 0;
-    }
-
-    .container {
-        order: 1;
-    }
 }
-
-
-/* CARRUSEL SERVICIOS */
-#carouselExampleCaptions {
-    max-width: 100% !important;
-    box-shadow: #2a4b72 0px 30px 30px -20px;
-    border-radius: 40px;
-}
-
-.cS img {
-    max-width: 100% !important;
-    object-fit: cover !important;
-    border-radius: 40px;
-    padding: 10px;
-    border: 5px solid rgb(255, 255, 255);
-}
-
-/* Registrar servicio h1 y carrousel */
-.registrarServicios {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-@media screen and (max-width:1112px) {
-    .registrarServicios {
-        width: 500px;
-        display: flex;
-        flex-direction: column;
-        align-items: center !important;
-    }
-}
-
-@media screen and (max-width:600px) {
-    .registrarServicios {
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .textarea{
-        height: 230px;
-    }
-}
-
 
 /* INPUTS Y SELECT DE REGISTRAR SERVICIOS*/
-.textarea {
-    min-width: 100%;
-    font-size: 14px;
-    height: 150px;
+.input, .select{
+    min-width: 90%;
 }
 
 /* CAMBIO TAMAÑO A LOS INPUTS Y SELECT Y LOS CENTRO  */
-.nav1,
-.nav2 {
-    width: 90% !important;
+.nav1 {
+    width: 100% !important;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }

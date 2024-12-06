@@ -14,20 +14,25 @@
 }
 
 /* FORMULARIO USUARIOS */
-
 .container {
-    width: 100% !important;
+    width: 50% !important;
 }
 
 @media screen and (max-width:1112px) {
     .container {
-        width: 100% !important;
+        width: 60% !important;
     }
 }
 
 .input,
 .select {
     min-width: 90% !important;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
 }
 
 .nav1 {

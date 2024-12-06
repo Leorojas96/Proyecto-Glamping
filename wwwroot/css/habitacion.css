@@ -5,15 +5,16 @@
     gap: 10px;
 }
 
-
-/* BOTONES GUARDAR Y CANCELAR */
-#div_btn {
+/* FORMULARIO DETALLES*/
+.form {
+    width: 100%;
+    margin-top: 20px;
     display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* FORMULARIO */
+/* CONTENEDOR */
 .container {
     min-width: 50% !important;
     display: flex;
@@ -22,20 +23,23 @@
     align-items: center;
 }
 
-
-.textarea-selecciones {
-    width: 80%;
+.col-md-6 {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 10px;
+}
+
+    .col-md-6 .input, .col-md-6 .select {
+        min-width: 100%;
+    }
+
+/* BOTONER EDITAR ATRAS DE FORMULARIO DETALLES */
+#btn-detalles {
+    width: 10% !important;
 }
 
 @media screen and (max-width:1230px) {
-    .textarea-selecciones {
-        display: flex;
-        min-width: 80%;
-    }
-
     .nav1,
     .nav2 {
         flex-wrap: wrap;
@@ -46,38 +50,49 @@
     #crearHabitacion_fotos {
         display: flex;
         flex-direction: column;
-        align-items:center;
+        align-items: center;
     }
 
-    .container{
+    .container {
         width: 90% !important;
     }
 
-    #registrarHabitacion{
+    #registrarHabitacion {
         order: 0;
     }
 
-    .container{
+    .container {
         order: 1;
     }
 }
 
 @media screen and (max-width:600px) {
     .textarea-selecciones {
-        width: 140% ;
+        width: 140%;
         display: flex;
         flex-direction: column;
-        align-items:center;
+        align-items: center;
     }
 
-    .textarea{
+    .textarea {
         height: 230px;
     }
 }
 
+/* INPUTS */
+.nav1 {
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
+}
+
+    .nav1 .input {
+        min-width: 60% !important;
+    }
+
 /*  SELECCIONES DE HABITACION*/
 #selecciones {
-    min-width: 80%;
+    min-width: 50%;
     background: #f0e6D6 !important;
     border-radius: 40px;
     padding: 15px;
@@ -95,13 +110,6 @@ label {
 
 .nav_nav {
     display: flex;
-}
-
-/* TEXTAREA */
-.textarea {
-    min-width: 50%;
-    font-size: 14px;
-    float: right;
 }
 
 /* CARRUSEL CREAR HABITACION */

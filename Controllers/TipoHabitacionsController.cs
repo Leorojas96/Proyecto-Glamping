@@ -120,10 +120,47 @@ namespace Glamping2.Controllers
         }
 
         // GET: TipoHabitacions/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            try
+            {
+                var userEmail = User.Identity.Name;
+
+                if (userEmail == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+
+                // Obtener el rol del usuario actual
+                var userRole = await _context.Usuarios
+                    .Where(u => u.Correo == userEmail)
+                    .Select(u => u.IdRol)
+                    .FirstOrDefaultAsync();
+
+                if (userRole == 0)
+                {
+                    return RedirectToAction("AccessDenied", "Account");
+                }
+
+                // Obtener el nombre del rol
+                var role = await _context.Roles
+                    .Where(r => r.IdRol == userRole)
+                    .Select(r => r.NomRol)
+                    .FirstOrDefaultAsync();
+
+                // Determina si el usuario es administrador
+                ViewBag.IsAdmin = role == "Administrador";
+
+                // Retorna la vista de creación
+                return View();
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores y pasar el mensaje de error a la vista de error
+                return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
+            }
         }
+
 
         // POST: TipoHabitacions/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -191,40 +228,39 @@ namespace Glamping2.Controllers
         }
 
 
-        // GET: TipoHabitacions/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (id == null || _context.TipoHabitacions == null)
+            var tipoHabitacion = await _context.TipoHabitacions.FindAsync(id);
+            if (tipoHabitacion != null)
             {
-                return NotFound();
+                tipoHabitacion.Estado = "Inactivo"; // Cambiar el estado a Inactivo
+                _context.Update(tipoHabitacion);
             }
 
-            var tipoHabitacion = await _context.TipoHabitacions
-                .FirstOrDefaultAsync(m => m.IdTipoHabita == id);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Activate(int id)
+        {
+            var tipoHabitacion = await _context.TipoHabitacions.FindAsync(id);
+
             if (tipoHabitacion == null)
             {
                 return NotFound();
             }
 
-            return View(tipoHabitacion);
-        }
-
-        // POST: TipoHabitacions/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.TipoHabitacions == null)
-            {
-                return Problem("Entity set 'GLAMPINGContext.TipoHabitacions'  is null.");
-            }
-            var tipoHabitacion = await _context.TipoHabitacions.FindAsync(id);
-            if (tipoHabitacion != null)
-            {
-                _context.TipoHabitacions.Remove(tipoHabitacion);
-            }
-            
+            tipoHabitacion.Estado = "Activo"; // Cambiar el estado a Activo
+            _context.Update(tipoHabitacion);
             await _context.SaveChangesAsync();
+
+            TempData["Message"] = "El tipo de habitación ha sido activado.";
             return RedirectToAction(nameof(Index));
         }
 

@@ -21,8 +21,8 @@ namespace Glamping2.Controllers
         // GET: Roles
         public async Task<IActionResult> Index()
         {
-            try
-            {
+            
+            
                 // Obtener el correo electrónico del usuario autenticado
                 var userEmail = User.Identity.Name;
 
@@ -57,12 +57,8 @@ namespace Glamping2.Controllers
                 var roles = await _context.Roles.ToListAsync();
 
                 return View(roles);
-            }
-            catch (Exception ex)
-            {
-                // Manejar errores y mostrar una vista de error
-                return View("Error", new ErrorViewModel { ErrorMessage = ex.Message });
-            }
+            
+            
         }
 
 
@@ -86,16 +82,18 @@ namespace Glamping2.Controllers
 
         // GET: Roles/Create
         public IActionResult Create()
-        {
-            return View();
-        }
+        
 
+            {
+                var role = new Role(); // Inicializar un nuevo objeto Role
+                return View(role); // Pasar el objeto Role a la vista
+            }
         // POST: Roles/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdRol,NomRol")] Role role)
+        public async Task<IActionResult> Create([Bind("IdRol,NomRol,Estado,PermisoDashboard,PermisoRoles,PermisoUsuarios,PermisoHabitaciones,PermisoServicios,PermisoPaquetes,PermisoClientes,PermisoReservas")] Role role)
         {
             if (ModelState.IsValid)
             {
@@ -105,6 +103,7 @@ namespace Glamping2.Controllers
             }
             return View(role);
         }
+
 
         // GET: Roles/Edit/5
         public async Task<IActionResult> Edit(int? id)

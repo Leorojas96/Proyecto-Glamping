@@ -23,15 +23,13 @@
   margin: 10px;
 }
 
-.form {
-  width: 100%;
-  margin-top: 20px;
+.form-group{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.input {
+.input, .select {
   min-width: 90% !important;
 }
 
@@ -44,3 +42,10 @@
     width: 100% !important;
   }
 }
+
+/* FORMULARIO USUARIO */
+/* .mb-3{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */

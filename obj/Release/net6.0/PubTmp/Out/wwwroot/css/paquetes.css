@@ -182,3 +182,12 @@ align-items: center;
         order: 1;
     }
 }
+
+#div_btn{
+    display: flex;
+    justify-content: center;
+}
+
+.login-button{
+    width: 40%;
+}
